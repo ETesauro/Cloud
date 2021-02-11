@@ -8,7 +8,6 @@ import SearchBar from "./component/SearchBar";
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <SearchBar/>
   </React.StrictMode>,
   document.getElementById('root')
 );

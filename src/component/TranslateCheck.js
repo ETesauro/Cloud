@@ -13,7 +13,7 @@ export default function TranslateCheck(props) {
         //translateText("2f05614515214f3cb8f91f9f49103184", "westeurope", "https://api.cognitive.microsofttranslator.com", ["hello", "world"])
     }, []);
 
-    function translateText(subscriptionKey, region, endpoint, inputText) {
+    async function translateText(subscriptionKey, region, endpoint, inputText) {
         var objArray = [];
         inputText.forEach(string => {
             objArray.push({
@@ -21,7 +21,20 @@ export default function TranslateCheck(props) {
             });
         });
 
-        let options = {
+        await axios.post("https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=it", objArray, {
+            headers: {
+                'Ocp-Apim-Subscription-Key': subscriptionKey,
+                'Ocp-Apim-Subscription-Region': region,
+                'Content-type': 'application/json'
+            },
+        }).then(res => {
+            console.log("res data: " + res.data);
+            setVideoInfo(res.data);
+        }).catch(err => {
+            console.log(err);
+        });
+
+        /*let options = {
             method: 'POST',
             baseUrl: endpoint,
             url: 'translate',
@@ -43,12 +56,12 @@ export default function TranslateCheck(props) {
             // TODO Controlla se ci sono errori
 
             setVideoInfo(body);
-        });
+        });*/
     };
 
     return (
         <div>
-            <div className=" my-4 flex flex-col w-10/12 mx-auto">
+            <div className="my-4 flex flex-col w-10/12 mx-auto">
                 <div className="flex flex-col">
                     <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -75,39 +88,33 @@ export default function TranslateCheck(props) {
                                     </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
-                                    {videoInfo.map((item, index) => {
-                                        return(
-                                            <tr key={index}>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="flex items-center">
-                                                <div className="flex-shrink-0 h-10 w-10">
-                                                    <img className="h-10 w-10 rounded-full"
-                                                         src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=4&amp;w=256&amp;h=256&amp;q=60"
-                                                         alt=""/>
-                                                </div>
-                                                <div className="ml-4">
-                                                    <div className="text-sm font-medium text-gray-900">
-                                                        Jane Cooper
-                                                    </div>
-                                                    <div className="text-sm text-gray-500">
-                                                        jane.cooper@example.com
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-sm text-gray-900">Regional Paradigm Technician</div>
-                                            <div className="text-sm text-gray-500">Optimization</div>
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <div>{item.translations[0].text}</div>
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            Admin
-                                        </td>
-                                    </tr>
-                                        );
-                                    })}
+                                    {
+                                        props.videoInfo.videos !== undefined ?
+                                            props.videoInfo.videos[0].insights.transcript.map((item, index) => {
+                                                return(
+                                                    <tr key={index}>
+                                                        <th scope="col"
+                                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                            {item.instances[0].adjustedStart}
+                                                        </th>
+                                                        <th scope="col"
+                                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
+                                                            {item.text}
+                                                        </th>
+                                                        <th scope="col"
+                                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
+                                                            Translated Text
+                                                        </th>
+                                                        <th scope="col"
+                                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                            {item.instances[0].adjustedEnd}
+                                                        </th>
+                                                    </tr>
+                                                );
+                                            })
+                                            :
+                                            ""
+                                    }
                                     </tbody>
                                 </table>
                             </div>

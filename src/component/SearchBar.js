@@ -1,6 +1,9 @@
 import React, {useState, useEffect, useRef} from 'react'
 import ImageUpload from "./OpenFileDialog";
 import request from "request";
+import TranslateCheck from "./TranslateCheck";
+import content from "../content/content";
+import axios from "axios";
 
 const accountId = "72bbde23-72dd-4c04-bbc4-85e2fffae566";
 const apiUrl = "https://api.videoindexer.ai";
@@ -8,16 +11,16 @@ const region = "trial";
 var VIDEO_INDEXER_API_KEY = "7ccf078ebdf14a769296b884345df84d";
 
 export default function SearchBar() {
-    const [accountAccessToken, setAccountAccessToken] = useState("");
 
-    const [localPath,setPathVideo] = useState("");
-    console.log(localPath);
-    const [urlVideo,setUrlVideo] = useState("");
+    // Scelta del video
+    const [localPath, setPathVideo] = useState(""); // Forse non lo facciamo
+    const [urlVideo, setUrlVideo] = useState("");
 
+    // Open FIle Dialog
     const [image, setImage] = useState("");
     const inputFile = useRef(null);
     const handleFileUpload = e => {
-        const { files } = e.target;
+        const {files} = e.target;
         if (files && files.length) {
             const filename = files[0].name;
 
@@ -30,43 +33,31 @@ export default function SearchBar() {
         }
     };
 
-    useEffect(() => {
-        console.log("ciao");
-    }, []);
+    // Video Indexer
+    const [accountAccessToken, setAccountAccessToken] = useState("");
+    const [videoInfo, setVideoInfo] = useState("");
 
-    function getAccessToken() {
+    async function getVideoIndexerAccountAccessToken() {
+        await axios.get("https://api.videoindexer.ai/auth/" + region + "/Accounts/" + accountId + "/AccessToken?allowEdit': true", {
+            headers: {
+                'Ocp-Apim-Subscription-Key': VIDEO_INDEXER_API_KEY,
+                'Ocp-Apim-Subscription-Region': region,
+                'Content-type': 'application/json'
+            },
+        }).then(res => {
+            console.log("res data: " + res.data);
+            //setVideoInfo(res.data);
+        }).catch(err => {
+            console.log(err);
+        });
+
+        /*
         let options = {
             method: 'GET',
             baseUrl: apiUrl,
             url: 'auth/' + region + '/Accounts/' + accountId + '/AccessToken',
             qs: {
                 'allowEdit': true
-            },
-            headers: {
-                    'Ocp-Apim-Subscription-Key': VIDEO_INDEXER_API_KEY,
-                    'Ocp-Apim-Subscription-Region': region,
-                    'Content-type': 'application/json',
-
-            },
-            json: true,
-        };
-
-        request(options, function (err, res, body) {
-            setAccountAccessToken(JSON.stringify(body, null, 4));
-        });
-    };
-    function uploadVideoIndexerVideoAsync(){
-
-        let optionsNullUrl = {
-            method: 'GET',
-            baseUrl: apiUrl,
-            url: region+'/Accounts/' + accountId + '/Videos',
-            qs: {
-                'accessToken': accountAccessToken,
-                'name':'video_name',
-                'description':'description_name',
-                'privacy':'private',
-                'some_partition':'some_partition',
             },
             headers: {
                 'Ocp-Apim-Subscription-Key': VIDEO_INDEXER_API_KEY,
@@ -77,17 +68,43 @@ export default function SearchBar() {
             json: true,
         };
 
+        request(options, function (err, res, body) {
+            setAccountAccessToken(JSON.stringify(body, null, 4));
+        });*/
+
+    };
+    function uploadVideoIndexerVideo() {
+
+        let optionsNullUrl = {
+            method: 'GET',
+            baseUrl: apiUrl,
+            url: region + '/Accounts/' + accountId + '/Videos',
+            qs: {
+                'accessToken': accountAccessToken,
+                'name': 'video_name',
+                'description': 'description_name',
+                'privacy': 'private',
+                'some_partition': 'some_partition',
+            },
+            headers: {
+                'Ocp-Apim-Subscription-Key': VIDEO_INDEXER_API_KEY,
+                'Ocp-Apim-Subscription-Region': region,
+                'Content-type': 'application/json',
+            },
+            json: true,
+        };
+
         let optionsUrl = {
             method: 'GET',
             baseUrl: apiUrl,
-            url: region+'/Accounts/' + accountId + '/Videos',
+            url: region + '/Accounts/' + accountId + '/Videos',
             qs: {
                 'accessToken': accountAccessToken,
-                'name':'video_name',
-                'description':'description_name',
-                'privacy':'private',
-                'some_partition':'some_partition',
-                'videoUrl':urlVideo
+                'name': 'video_name',
+                'description': 'description_name',
+                'privacy': 'private',
+                'some_partition': 'some_partition',
+                'videoUrl': urlVideo
             },
             headers: {
                 'Ocp-Apim-Subscription-Key': VIDEO_INDEXER_API_KEY,
@@ -102,12 +119,83 @@ export default function SearchBar() {
             setAccountAccessToken(JSON.stringify(body, null, 4));
         });
     };
+    function GetVideoIndexerVideoAccessTokenAsync() {
 
+    }
+    function WaitToIndexVideoAsync() {
+
+    }
+
+    // Translator
+    function getLanguagesForTranslate() {
+
+    }
+
+    // Barra di separazione
+    const LineSeparator = function () {
+        return (
+            <div className="hidden sm:block" aria-hidden="true">
+                <div className="py-5">
+                    <div className="border-t border-gray-200"></div>
+                </div>
+            </div>
+        );
+    }
+
+    // DEBUG
+    useEffect(() => {
+        getVideoIndexerAccountAccessToken();
+        //setVideoInfo(content.translationCheck.mockText);
+    }, []);
 
     return (
-        <div class="container w-10/12 mx-auto">
-            <div>
-                <div class="md:grid md:grid-cols-3 md:gap-6">
+        <div class="border-t border-gray-200 container w-10/12 mx-auto">
+
+            {/*
+            <div className="mt-10 sm:mt-0 bg-blue-100">
+                <div className="md:grid md:grid-cols-3 md:gap-6">
+                    <div className="md:col-span-1">
+                        <div className="px-4 sm:px-0">
+                            <h3 className="text-lg font-medium leading-6 text-gray-900">Step to indexing video</h3>
+                            <ol>
+                                <li>Step 1 - Copy the video URL or choose local video</li>
+                                <li>Step 2 - Choose subtitles language</li>
+                                <li>Step 3 - Start the indexing process and waiting for video</li>
+                                <li>Step 4 - View the indexed video with subtitles</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            */}
+
+            <h1>ciao {accountAccessToken}</h1>
+
+            {/* Step 1*/}
+            <div className="mt-5">
+                <div className="text-center flex justify-center items-center mb-3 pr-4 sm:pr-0">
+                    <span
+                        className="text-md bg-gray-500 text-white px-8 sm:px-6 py-2 shadow text-center mb-4 mr-4 sm:mb-0 rounded-full">
+                    Step 1
+                    </span>
+                    <h3 id="step-1" className="header_center mb-0 leading-normal ">
+                        Copy the video URL or choose local video</h3>
+                </div>
+                {/*<article
+                    className="container text-sm text-grey-dark leading-normal max-w-xl px-4 mx-auto text-center mb-6">
+                    <p className="mb-3">
+                        While searching on the video Webcasterfeed.com you got some video by which you actually wanted
+                        to
+                        have mp4 of.
+                        just copy the url of that page which contain the media by either copying from url bar.
+                        I know its pretty easy you can move to next step, just some keyboard shortcuts.
+                        Press <b className="mx-1">(CTRL/Command + L)</b> for selecting url bar &amp; Press <b
+                        className="mx-1">(CTRL/Command + C)</b>
+                        for copying the url.
+                    </p>
+                </article>*/}
+
+                <div class="md:grid md:grid-cols-3 md:gap-6 mt-5">
                     <div class="md:col-span-1">
                         <div class="px-4 sm:px-0">
                             <h3 class="text-lg font-medium leading-6 text-gray-900">Choose video</h3>
@@ -148,17 +236,18 @@ export default function SearchBar() {
                                             </p>
                                             <button
                                                 className="bg-blue-300 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded-full shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ml-5"
-                                                type="button" style={{transition: "all .15s ease"}} onClick={getAccessToken}>
+                                                type="button" style={{transition: "all .15s ease"}}>
 
                                                 <div>
                                                     <input
-                                                        style={{ display: "none" }}
+                                                        style={{display: "none"}}
                                                         //accept=".zip,.rar"
                                                         ref={inputFile}
                                                         onChange={handleFileUpload}
                                                         type="file"
                                                     />
-                                                    <input type="file" ref={inputFile} onChange={event => setPathVideo(event.target.value)}/>
+                                                    <input type="file" ref={inputFile}
+                                                           onChange={event => setPathVideo(event.target.value)}/>
 
                                                 </div>
                                             </button>
@@ -172,106 +261,87 @@ export default function SearchBar() {
                 </div>
             </div>
 
-            <div class="hidden sm:block" aria-hidden="true">
-                <div class="py-5">
-                    <div class="border-t border-gray-200"></div>
+            <LineSeparator/>
+
+            {/* Step 2*/}
+            <div>
+                <div className="text-center flex justify-center items-center mb-3 pr-4 sm:pr-0">
+                    <span
+                        className="text-md bg-gray-500  text-white px-8 sm:px-6 py-2 shadow text-center mb-4 mr-4 sm:mb-0 rounded-full">
+                    Step 2
+                    </span>
+                    <h3 id="step-2" className="header_center mb-0 leading-normal ">
+                        Choose subtitles languages</h3>
                 </div>
+                <article
+                    className="container text-sm text-grey-dark leading-normal max-w-xl px-4 mx-auto text-center mb-6">
+                    <p className="mb-3">
+                        While searching on the video Webcasterfeed.com you got some video by which you actually wanted
+                        to
+                        have mp4 of.
+                        just copy the url of that page which contain the media by either copying from url bar.
+                        I know its pretty easy you can move to next step, just some keyboard shortcuts.
+                        Press <b className="mx-1">(CTRL/Command + L)</b> for selecting url bar &amp; Press <b
+                        className="mx-1">(CTRL/Command + C)</b>
+                        for copying the url.
+                    </p>
+                </article>
+
+                <TranslateCheck videoInfo={videoInfo}/>
             </div>
 
-            <div class="mt-10 sm:mt-0 bg-blue-100">
-                <div class="md:grid md:grid-cols-3 md:gap-6">
-                    <div class="md:col-span-1">
-                        <div class="px-4 sm:px-0">
-                            <h3 class="text-lg font-medium leading-6 text-gray-900">Step to indexing video</h3>
-                            <ol>
-                                <li>Step 1 - Copy the video URL or choose local video</li>
-                                <li>Step 2 - Choose subtitles language</li>
-                                <li>Step 3 - Start the indexing process and waiting for video</li>
-                                <li>Step 4 - View the indexed video with subtitles</li>
-                            </ol>
-                        </div>
-                    </div>
+            <LineSeparator/>
 
-                </div>
-            </div>
-
-            <div class="hidden sm:block" aria-hidden="true">
-                <div class="py-5">
-                    <div class="border-t border-gray-200"></div>
-                </div>
-            </div>
-            <div className="text-center flex justify-center items-center mb-3 pr-4 sm:pr-0">
-<span className="text-md bg-gray-500 text-white px-8 sm:px-6 py-2 shadow text-center mb-4 mr-4 sm:mb-0 rounded-full">
-Step 1
-</span>
-                <h3 id="step-1" className="header_center mb-0 leading-normal ">
-                    Copy the video URL or choose local video</h3>
-            </div>
-            <article className="container text-sm text-grey-dark leading-normal max-w-xl px-4 mx-auto text-center mb-6">
-                <p className="mb-3">
-                    While searching on the video Webcasterfeed.com you got some video by which you actually wanted to
-                    have mp4 of.
-                    just copy the url of that page which contain the media by either copying from url bar.
-                    I know its pretty easy you can move to next step, just some keyboard shortcuts.
-                    Press <b className="mx-1">(CTRL/Command + L)</b> for selecting url bar &amp; Press <b
-                    className="mx-1">(CTRL/Command + C)</b>
-                    for copying the url.
-                </p>
-            </article>
-            <div className="text-center flex justify-center items-center mb-3 pr-4 sm:pr-0">
-<span className="text-md bg-gray-500  text-white px-8 sm:px-6 py-2 shadow text-center mb-4 mr-4 sm:mb-0 rounded-full">
-Step 2
-</span>
-                <h3 id="step-2" className="header_center mb-0 leading-normal ">
-                    Choose subtitles languages</h3>
-            </div>
-            <article className="container text-sm text-grey-dark leading-normal max-w-xl px-4 mx-auto text-center mb-6">
-                <p className="mb-3">
-                    While searching on the video Webcasterfeed.com you got some video by which you actually wanted to
-                    have mp4 of.
-                    just copy the url of that page which contain the media by either copying from url bar.
-                    I know its pretty easy you can move to next step, just some keyboard shortcuts.
-                    Press <b className="mx-1">(CTRL/Command + L)</b> for selecting url bar &amp; Press <b
-                    className="mx-1">(CTRL/Command + C)</b>
-                    for copying the url.
-                </p>
-            </article>
-            <div className="text-center flex justify-center items-center mb-3 pr-4 sm:pr-0">
+            {/* Step 3*/}
+            <div>
+                <div className="text-center flex justify-center items-center mb-3 pr-4 sm:pr-0">
 <span className="text-md bg-gray-500  text-white px-8 sm:px-6 py-2 shadow text-center mb-4 mr-4 sm:mb-0 rounded-full">
 Step 3
 </span>
-                <h3 id="step-3" className="header_center mb-0 leading-normal ">
-                    Start the indexing process and waiting for</h3>
+                    <h3 id="step-3" className="header_center mb-0 leading-normal ">
+                        Start the indexing process and waiting for</h3>
+                </div>
+                <article
+                    className="container text-sm text-grey-dark leading-normal max-w-xl px-4 mx-auto text-center mb-6">
+                    <p className="mb-3">
+                        While searching on the video Webcasterfeed.com you got some video by which you actually wanted
+                        to
+                        have mp4 of.
+                        just copy the url of that page which contain the media by either copying from url bar.
+                        I know its pretty easy you can move to next step, just some keyboard shortcuts.
+                        Press <b className="mx-1">(CTRL/Command + L)</b> for selecting url bar &amp; Press <b
+                        className="mx-1">(CTRL/Command + C)</b>
+                        for copying the url.
+                    </p>
+                </article>
             </div>
-            <article className="container text-sm text-grey-dark leading-normal max-w-xl px-4 mx-auto text-center mb-6">
-                <p className="mb-3">
-                    While searching on the video Webcasterfeed.com you got some video by which you actually wanted to
-                    have mp4 of.
-                    just copy the url of that page which contain the media by either copying from url bar.
-                    I know its pretty easy you can move to next step, just some keyboard shortcuts.
-                    Press <b className="mx-1">(CTRL/Command + L)</b> for selecting url bar &amp; Press <b
-                    className="mx-1">(CTRL/Command + C)</b>
-                    for copying the url.
-                </p>
-            </article>
-            <div className="text-center flex justify-center items-center mb-3 pr-4 sm:pr-0">
+
+            <LineSeparator/>
+
+            {/* Step 4 */}
+            <div>
+                <div className="text-center flex justify-center items-center mb-3 pr-4 sm:pr-0">
 <span className="text-md bg-gray-500  text-white px-8 sm:px-6 py-2 shadow text-center mb-4 mr-4 sm:mb-0 rounded-full">
 Step 4
 </span>
-                <h3 id="step-4" className="header_center mb-0 leading-normal ">
-                    View the indexed video with subtitles </h3>
+                    <h3 id="step-4" className="header_center mb-0 leading-normal ">
+                        View the indexed video with subtitles </h3>
+                </div>
+                <article
+                    className="container text-sm text-grey-dark leading-normal max-w-xl px-4 mx-auto text-center mb-6">
+                    <p className="mb-3">
+                        While searching on the video Webcasterfeed.com you got some video by which you actually wanted
+                        to
+                        have mp4 of.
+                        just copy the url of that page which contain the media by either copying from url bar.
+                        I know its pretty easy you can move to next step, just some keyboard shortcuts.
+                        Press <b className="mx-1">(CTRL/Command + L)</b> for selecting url bar &amp; Press <b
+                        className="mx-1">(CTRL/Command + C)</b>
+                        for copying the url.
+                    </p>
+                </article>
             </div>
-            <article className="container text-sm text-grey-dark leading-normal max-w-xl px-4 mx-auto text-center mb-6">
-                <p className="mb-3">
-                    While searching on the video Webcasterfeed.com you got some video by which you actually wanted to
-                    have mp4 of.
-                    just copy the url of that page which contain the media by either copying from url bar.
-                    I know its pretty easy you can move to next step, just some keyboard shortcuts.
-                    Press <b className="mx-1">(CTRL/Command + L)</b> for selecting url bar &amp; Press <b
-                    className="mx-1">(CTRL/Command + C)</b>
-                    for copying the url.
-                </p>
-            </article>
+
         </div>
     );
 

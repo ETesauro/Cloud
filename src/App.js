@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from "./component/Navbar";
 import TranslateCheck from "./component/TranslateCheck";
+import SearchBar from "./component/SearchBar";
 
 function App() {
     // TODO SearchBar
@@ -11,8 +12,7 @@ function App() {
     return (
         <div>
             <Navbar />
-
-            <TranslateCheck />
+            <SearchBar />
         </div>
     );
 }
