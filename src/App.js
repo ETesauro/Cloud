@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from "./component/Navbar";
+import TranslateCheck from "./component/TranslateCheck";
 
 function App() {
     // TODO SearchBar
@@ -9,8 +10,9 @@ function App() {
     // TODO VideoView
     return (
         <div>
+            <Navbar />
 
-            <Navbar/>
+            <TranslateCheck />
         </div>
     );
 }
