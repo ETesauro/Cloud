@@ -1,13 +1,10 @@
 import React from 'react'
 import {useEffect, useState} from 'react'
 import axios from 'axios';
-import uuid from 'uuid'
-import request from "request";
 
 export default function TranslateCheck(props) {
 
     const [videoInfo, setVideoInfo] = useState([]);
-    const {v4: uuidv4} = require('uuid');
 
     useEffect(() => {
         //translateText("2f05614515214f3cb8f91f9f49103184", "westeurope", "https://api.cognitive.microsofttranslator.com", ["hello", "world"])
@@ -70,21 +67,13 @@ export default function TranslateCheck(props) {
                                     <thead className="bg-gray-50">
                                     <tr>
                                         <th scope="col"
-                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Start
-                                        </th>
+                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Start</th>
                                         <th scope="col"
-                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Original Text
-                                        </th>
+                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Original Text</th>
                                         <th scope="col"
-                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Translated Text
-                                        </th>
+                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Translated Text</th>
                                         <th scope="col"
-                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            End
-                                        </th>
+                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">End</th>
                                     </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
@@ -94,21 +83,13 @@ export default function TranslateCheck(props) {
                                                 return(
                                                     <tr key={index}>
                                                         <th scope="col"
-                                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                            {item.instances[0].adjustedStart}
-                                                        </th>
+                                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{item.instances[0].adjustedStart}</th>
                                                         <th scope="col"
-                                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
-                                                            {item.text}
-                                                        </th>
+                                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">{item.text}</th>
                                                         <th scope="col"
-                                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
-                                                            Translated Text
-                                                        </th>
+                                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">Translated Text</th>
                                                         <th scope="col"
-                                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                            {item.instances[0].adjustedEnd}
-                                                        </th>
+                                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{item.instances[0].adjustedEnd}</th>
                                                     </tr>
                                                 );
                                             })

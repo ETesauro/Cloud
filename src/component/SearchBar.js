@@ -1,20 +1,31 @@
-import React, {useState, useEffect, useRef} from 'react'
-import ImageUpload from "./OpenFileDialog";
+import React, {useState, useEffect, useRef, useCallback} from 'react'
 import request from "request";
 import TranslateCheck from "./TranslateCheck";
-import content from "../content/content";
 import axios from "axios";
+import NativeSelects from "./Dropdown";
 
-const accountId = "72bbde23-72dd-4c04-bbc4-85e2fffae566";
+const accountId = "ef932204-228e-4274-ab72-1a8fec9df8b7";
 const apiUrl = "https://api.videoindexer.ai";
 const region = "trial";
-var VIDEO_INDEXER_API_KEY = "7ccf078ebdf14a769296b884345df84d";
+var VIDEO_INDEXER_API_KEY = "0932f35273ec46c0bb4bedd8af660354";
+
+// Barra di separazione
+export function LineSeparator() {
+    return (
+        <div aria-hidden="true">
+            <div className="py-5">
+                <div className="border-t border-gray-200"></div>
+            </div>
+        </div>
+    );
+}
 
 export default function SearchBar() {
 
     // Scelta del video
-    const [localPath, setPathVideo] = useState(""); // Forse non lo facciamo
+    const [localPath, setPathVideo] = useState(""); // Forse non lo usiamo
     const [urlVideo, setUrlVideo] = useState("");
+    const {v4: uuidv4} = require('uuid');
 
     // Open FIle Dialog
     const [image, setImage] = useState("");
@@ -37,16 +48,27 @@ export default function SearchBar() {
     const [accountAccessToken, setAccountAccessToken] = useState("");
     const [videoInfo, setVideoInfo] = useState("");
 
+
+    async function indexVideo() {
+        // DONE Get Account Access Token
+        let accessToken = await getVideoIndexerAccountAccessToken();
+        // TODO Upload
+        await uploadVideoIndexerVideo(accessToken)
+
+        // TODO Wait to Index
+    }
     async function getVideoIndexerAccountAccessToken() {
-        await axios.get("https://api.videoindexer.ai/auth/" + region + "/Accounts/" + accountId + "/AccessToken?allowEdit': true", {
+        await axios.get(apiUrl + "/Auth/" + region + "/Accounts/" + accountId + "/AccessToken", {
+            params: {
+                'allowEdit': true
+            },
             headers: {
                 'Ocp-Apim-Subscription-Key': VIDEO_INDEXER_API_KEY,
-                'Ocp-Apim-Subscription-Region': region,
-                'Content-type': 'application/json'
             },
         }).then(res => {
-            console.log("res data: " + res.data);
-            //setVideoInfo(res.data);
+            // PROBLEMS: SETSTATE NON AGGIORNA SUBITO IL VALORE. COME FARE?
+            setAccountAccessToken(res.data);
+            console.log("finito: " + res.data);
         }).catch(err => {
             console.log(err);
         });
@@ -73,7 +95,28 @@ export default function SearchBar() {
         });*/
 
     };
-    function uploadVideoIndexerVideo() {
+    async function uploadVideoIndexerVideo(accessToken) {
+        console.log("upload: " + accessToken);
+        await axios.post(apiUrl + "/" + region + "/Accounts/" + accountId + "/Videos", {}, {
+            headers: {
+                'Ocp-Apim-Subscription-Key': VIDEO_INDEXER_API_KEY,
+                'Ocp-Apim-Subscription-Region': region,
+                'Content-type': 'application/json',
+                'x-ms-request-id':uuidv4().toString()
+            },
+            params: {
+                'accessToken': accessToken,
+                'name': 'video_name',
+                'description': 'description_name',
+                'privacy': 'private',
+                'some_partition': 'some_partition',
+                'videoUrl': "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
+            }
+        }).then(res => {
+            console.log("uploadVideoIndexerVideo" + res);
+        }).catch(err => {
+            console.log("uploadVideoIndexerVideo" + err);
+        });
 
         let optionsNullUrl = {
             method: 'GET',
@@ -115,41 +158,58 @@ export default function SearchBar() {
             json: true,
         };
 
-        request(optionsNullUrl, function (err, res, body) {
+        /*request(optionsNullUrl, function (err, res, body) {
             setAccountAccessToken(JSON.stringify(body, null, 4));
-        });
+        });*/
     };
-    function GetVideoIndexerVideoAccessTokenAsync() {
+    async function GetVideoIndexerVideoAccessTokenAsync() {
 
     }
-    function WaitToIndexVideoAsync() {
+    async function WaitToIndexVideoAsync() {
 
     }
 
     // Translator
-    function getLanguagesForTranslate() {
+    const [languages, setLanguages] = useState({});
+    const [language, setLanguage] = useState("");
 
+    async function getLanguagesForTranslate() {
+        var translatorEndpoint = "https://api.cognitive.microsofttranslator.com";
+        var route = "/languages?api-version=3.0";
+
+        await axios.get(translatorEndpoint + route, {
+            headers: {
+                'Accept-Language': 'en'
+            },
+            params: {
+                'scope': 'translation'
+            }
+        }).then(res => {
+            var data = res.data.translation;
+
+            var tmpDictionary = {};
+            for (var key in data) {
+                tmpDictionary[key] = data[key].name;
+            }
+            setLanguages(tmpDictionary);
+        }).catch(err => {
+            console.log(err);
+        });
     }
 
-    // Barra di separazione
-    const LineSeparator = function () {
-        return (
-            <div className="hidden sm:block" aria-hidden="true">
-                <div className="py-5">
-                    <div className="border-t border-gray-200"></div>
-                </div>
-            </div>
-        );
+    const handleLanguageChange = e => {
+        setLanguage(e.target.value);
+        console.log("target: " + e.target.value);
     }
 
     // DEBUG
     useEffect(() => {
-        getVideoIndexerAccountAccessToken();
+        getLanguagesForTranslate();
         //setVideoInfo(content.translationCheck.mockText);
     }, []);
 
     return (
-        <div class="border-t border-gray-200 container w-10/12 mx-auto">
+        <div className="border-t border-gray-200 container w-10/12 mx-auto">
 
             {/*
             <div className="mt-10 sm:mt-0 bg-blue-100">
@@ -169,7 +229,8 @@ export default function SearchBar() {
             </div>
             */}
 
-            <h1>ciao {accountAccessToken}</h1>
+            <h1>Account Access Token: {accountAccessToken}</h1>
+            <h1>Language: {language}</h1>
 
             {/* Step 1*/}
             <div className="mt-5">
@@ -179,7 +240,7 @@ export default function SearchBar() {
                     Step 1
                     </span>
                     <h3 id="step-1" className="header_center mb-0 leading-normal ">
-                        Copy the video URL or choose local video</h3>
+                        Paste the video URL or choose local video and select the target language</h3>
                 </div>
                 {/*<article
                     className="container text-sm text-grey-dark leading-normal max-w-xl px-4 mx-auto text-center mb-6">
@@ -195,47 +256,38 @@ export default function SearchBar() {
                     </p>
                 </article>*/}
 
-                <div class="md:grid md:grid-cols-3 md:gap-6 mt-5">
-                    <div class="md:col-span-1">
-                        <div class="px-4 sm:px-0">
-                            <h3 class="text-lg font-medium leading-6 text-gray-900">Choose video</h3>
-                            <p class="mt-1 text-sm text-gray-600">
-                                Insert a video URL or choose video from your local device
-                            </p>
-                        </div>
-                    </div>
-                    <div class="mt-5 md:mt-0 md:col-span-2">
+                <div className="my-4 flex flex-col w-10/12 mx-auto items-center">
+                    <div className="mt-5 md:mt-0 md:col-span-2">
                         <form action="#" method="POST">
-                            <div class="shadow sm:rounded-md sm:overflow-hidden">
-                                <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
-                                    <div class="grid grid-cols-3 gap-6">
-                                        <div class="col-span-3 sm:col-span-2">
-                                            <label for="company_website"
-                                                   class="block text-sm font-medium text-gray-700">
+                            <div className="shadow-md sm:rounded-md sm:overflow-hidden">
+                                <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
+
+                                    {/*Url video*/}
+                                    <div className="mt-2 flex flex-col md:flex-row items-center">
+                                        <div className="col-span-3 sm:col-span-2">
+                                            <label htmlFor="company_website"
+                                                   className="block text-sm font-medium text-gray-700">
                                                 Url Video
                                             </label>
-                                            <div class="mt-1 flex rounded-md shadow-sm">
-                  <span
-                      class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                    http://
-                  </span>
+                                            <div className="mt-1 flex rounded-md shadow-sm">
                                                 <input type="text" name="company_website" id="company_website"
-                                                       class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
+                                                       className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
                                                        onChange={event => setUrlVideo(event.target.value)}
-                                                       placeholder="www.example.com"/>
+                                                       placeholder="www.example.com" />
                                             </div>
                                         </div>
                                     </div>
 
+                                    <p className="flex flex-row mx-auto justify-center">Or</p>
 
+                                    {/*Bottone per il file locale*/}
                                     <div>
-
-                                        <div class="mt-2 flex items-center">
-                                            <p className="mt-2 text-sm text-gray-500">
+                                        <div className="flex flex-col items-center">
+                                            <p className="text-sm text-gray-500">
                                                 Select and upload your local video
                                             </p>
                                             <button
-                                                className="bg-blue-300 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded-full shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ml-5"
+                                                className="bg-blue-300 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 mt-3 py-2 rounded-full shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ml-5"
                                                 type="button" style={{transition: "all .15s ease"}}>
 
                                                 <div>
@@ -248,16 +300,34 @@ export default function SearchBar() {
                                                     />
                                                     <input type="file" ref={inputFile}
                                                            onChange={event => setPathVideo(event.target.value)}/>
-
                                                 </div>
                                             </button>
                                         </div>
                                     </div>
-                                </div>
 
+                                    {/*Dropdown languages*/}
+                                    <div>
+                                        <div className="flex flex-col items-center justify-center">
+                                            <p className="text-sm text-gray-500">
+                                                Select the target language
+                                            </p>
+
+                                            <NativeSelects languages={languages} onChangeValue={handleLanguageChange}/>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </form>
+
                     </div>
+
+                    {/*Bottone avvia*/}
+                    <button
+                        className="bg-blue-300 text-white text-xl active:bg-pink-600 font-bold uppercase px-4 mt-3 py-2 rounded-full shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ml-5 hover:bg-blue-400"
+                        onClick={indexVideo}>
+                        Start
+                    </button>
                 </div>
             </div>
 
