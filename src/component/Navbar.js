@@ -5,10 +5,9 @@ export default function Navbar() {
 
     return (
         <div>
-            <div className="flex items-center justify-between w-10/12 mx-auto py-5 text-black font-dosis">
+            <div className="flex items-center justify-between w-10/12 mx-auto text-black font-dosis">
                 <h1 className="text-3xl font-bold">
-                    {content.nav.logo} {' '}
-                    <span className="w-3 h-3 bg-red-500 inline-block rounded-full"/>
+                    <img src={process.env.PUBLIC_URL + '/assets/logo.svg'} className="w-1/12 py-3"/>
                 </h1>
 
                 <div>

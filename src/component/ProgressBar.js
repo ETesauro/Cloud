@@ -5,7 +5,6 @@ export default function ProgressBar(props) {
     const [progress, setProgress] = useState("0%");
 
     useEffect(() => {
-        console.log("siuuum");
         if(!(props.processingProgress === "")) {
             setProgress(props.processingProgress);
         }

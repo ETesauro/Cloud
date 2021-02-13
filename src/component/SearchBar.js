@@ -1,9 +1,9 @@
 import React, {useState, useEffect, useRef, useCallback} from 'react'
-import TranslateCheck from "./TranslateCheck";
 import axios from "axios";
+import content from "../content/content";
+import TranslateCheck from "./TranslateCheck";
 import NativeSelects from "./Dropdown";
 import Step from "./Step";
-import content from "../content/content";
 import SelectFileButton from "./SelectFileButton";
 import {sleep} from "../utils/utils";
 import TextField from '@material-ui/core/TextField';
@@ -76,7 +76,7 @@ export default function SearchBar() {
                 'description': 'description_name',
                 'privacy': 'private',
                 'some_partition': 'some_partition',
-                'videoUrl': "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4"
+                'videoUrl': urlVideo
             }
         })
         console.log("videoUploadResponse" + videoUploadResponse.data);
@@ -117,9 +117,16 @@ export default function SearchBar() {
     }
 
     // Translator
-    const [language, setLanguage] = useState("");
+    const [language, setLanguage] = useState({
+        code: '',
+        language: ''
+    });
     const handleLanguageChange = e => {
-        setLanguage(e.target.value);
+        const code = e.target.name;
+        setLanguage({
+            ...language,
+            [code]: e.target.value
+        });
         console.log("target: " + e.target.value);
     }
 
@@ -130,8 +137,9 @@ export default function SearchBar() {
             <div className="mt-4">
                 <Step name={content.steps[0].name} title={content.steps[0].title}
                       article={content.steps[0].article}/>
+
                 {/* Form */}
-                <div className="my-5 flex flex-col w-10/12 mx-auto items-center">
+                <div className="mt-5 flex flex-col w-10/12 mx-auto items-center">
                     <div className="mt-5 w-10/12 md:mt-0 md:col-span-2">
                         <form action="#" method="POST">
                             <div className="shadow-md sm:rounded-md sm:overflow-hidden">
@@ -151,12 +159,8 @@ export default function SearchBar() {
                                     {/*Dropdown languages*/}
                                     <div>
                                         <div className="flex flex-col items-center justify-center">
-                                            <p className="text-sm text-gray-500">
-                                                Select the target language
-                                            </p>
-
-                                            <NativeSelects onChangeValue={handleLanguageChange}/>
-
+                                            <p className="text-sm text-gray-500">Select the target language</p>
+                                            <NativeSelects onChangeValue={handleLanguageChange} languageValue={language}/>
                                         </div>
                                     </div>
                                 </div>
@@ -166,7 +170,7 @@ export default function SearchBar() {
 
                     {/*Bottone avvia*/}
                     <button
-                        className="bg-blue-300 text-white text-xl active:bg-pink-600 font-bold uppercase px-4 mt-3 py-2 rounded-full shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ml-5 hover:bg-blue-400"
+                        className="bg-blue-300 text-white text-xl active:bg-pink-600 font-bold uppercase px-4 py-2 mt-5 rounded-full shadow hover:shadow-md outline-none focus:outline-none hover:bg-blue-400"
                         onClick={indexVideo}>
                         Start
                     </button>

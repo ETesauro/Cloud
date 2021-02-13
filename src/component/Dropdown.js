@@ -21,26 +21,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NativeSelects(props) {
     const classes = useStyles();
-
-    const handleChange = (event) => {
-        const name = event.target.name;
-        setState({
-            ...state,
-            [name]: event.target.value,
-        });
-    };
-
     const [languages, setLanguages] = useState({});
-    const [state, setState] = React.useState({
-        age: '',
-        name: 'hai',
-    });
 
     async function getLanguagesForTranslate() {
 
         await axios.get(`${REACT_APP_TRANSLATOR_ENDPOINT}` + "/languages?api-version=3.0", {
-            headers: { 'Accept-Language': 'en' },
-            params: { 'scope': 'translation' }
+            headers: {'Accept-Language': 'en'},
+            params: {'scope': 'translation'}
         }).then(res => {
             var data = res.data.translation;
 
@@ -61,15 +48,11 @@ export default function NativeSelects(props) {
     return (
         <div>
             <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="age-native-simple">Age</InputLabel>
+                <InputLabel htmlFor="age-native-simple">Language</InputLabel>
                 <Select
                     native
-                    value={state.age}
+                    value={languages[props.languageValue]}
                     onChange={props.onChangeValue}
-                    inputProps={{
-                        name: 'age',
-                        id: 'age-native-simple',
-                    }}
                 >
                     <option aria-label="None" value=""/>
                     {Object.keys(languages).map((key, index) => {
@@ -80,6 +63,7 @@ export default function NativeSelects(props) {
                 </Select>
             </FormControl>
 
+            <h1>{languages[props.languageValue]}</h1>
         </div>
     );
 }
