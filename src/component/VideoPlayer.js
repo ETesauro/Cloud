@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {createFFmpeg, fetchFile} from '@ffmpeg/ffmpeg';
+import React, {useState} from 'react';
+import {fetchFile} from '@ffmpeg/ffmpeg';
 
 function VideoPlayer(props) {
     const [gif, setGif] = useState();

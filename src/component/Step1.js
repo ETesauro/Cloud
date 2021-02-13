@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import Step from "./Step";
 import content from "../content/content";
-import TextField from "@material-ui/core/TextField";
 import SelectFileButton from "./SelectFileButton";
 import NativeSelects from "./Dropdown";
 import axios from "axios";

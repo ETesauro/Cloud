@@ -1,7 +1,5 @@
-import React from 'react'
-import {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import axios from 'axios';
-import ProgressBar from "./ProgressBar";
 
 const {
     REACT_APP_TRANSLATOR_SUBSCRIPTION_KEY,

@@ -1,8 +1,4 @@
-import React, {useState, useEffect, useRef, useCallback} from 'react'
-import content from "../content/content";
-import TranslateCheck from "./TranslateCheck";
-import Step from "./Step";
-import VideoPlayer from "./VideoPlayer";
+import React, {useState} from 'react'
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
@@ -51,21 +47,23 @@ export default function Body(props) {
 
     return (
 
-            <div>
-                <Step1 languageValue={language} onLanguageChangeValue={handleLanguageChange} onFileChangeValue={handleLocalFileChange} onIndexedFinish={setVideoInfo} localVideoValue={localVideo}/>
+        <div>
+            <Step1 languageValue={language} onLanguageChangeValue={handleLanguageChange}
+                   onFileChangeValue={handleLocalFileChange} onIndexedFinish={setVideoInfo}
+                   localVideoValue={localVideo}/>
 
-                <LineSeparator/>
+            <LineSeparator/>
 
-                <Step2 videoInfoValue={videoInfo} languageValue={language}/>
+            <Step2 videoInfoValue={videoInfo} languageValue={language}/>
 
-                <LineSeparator/>
+            <LineSeparator/>
 
-                <Step3 videoValue={localVideo} ffmpegValue={props.ffmpegValue}/>
+            <Step3 videoValue={localVideo} ffmpegValue={props.ffmpegValue}/>
 
-                <LineSeparator/>
+            <LineSeparator/>
 
-                <Step4/>
+            <Step4/>
 
-            </div>
-        );
+        </div>
+    );
 }
