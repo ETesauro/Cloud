@@ -92,10 +92,10 @@ export default function Step1(props) {
     }
 
     return (
-        <div className="border-t border-gray-200 container w-10/12 mx-auto">
+        <div className="container w-10/12 mx-auto">
 
             {/* Step 1*/}
-            <div className="mt-4">
+            <div className="mt-7">
                 <Step name={content.steps[0].name} title={content.steps[0].title}
                       article={content.steps[0].article}/>
 

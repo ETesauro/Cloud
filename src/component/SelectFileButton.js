@@ -6,6 +6,7 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 const useStyles = makeStyles((theme) => ({
     button: {
         margin: theme.spacing(1),
+        color: 'white'
     },
 }));
 
@@ -22,7 +23,7 @@ export default function SelectFileButton(props) {
 
                 <Button
                     variant="contained"
-                    color="primary"
+                    style={{background:'linear-gradient(to right, #2f3542, #57606f)'}}
                     className={classes.button}
                     endIcon={<CloudUploadIcon/>}
                     component="label"

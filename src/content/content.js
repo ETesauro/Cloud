@@ -9,22 +9,22 @@ export default {
     steps: [
         {
             name: 'Step 1',
-            title: 'Paste the video URL or choose local video and select the target language',
+            title: 'Choose your local video and select the target language',
             article: ''
         },
         {
             name: 'Step 2',
-            title: 'Choose subtitles languages',
-            article: 'While searching on the video Webcasterfeed.com you got some video by which you actually wanted\n to\n have mp4 of.\njust copy the url of that page which contain the media by either copying from url bar.\nI know its pretty easy you can move to next step, just some keyboard shortcuts.\n'
+            title: 'Wait to translation ends',
+            article: ''
         },
         {
             name: 'Step 3',
-            title: 'Start the indexing process and waiting for',
+            title: 'See the final result',
             article: 'While searching on the video Webcasterfeed.com you got some video by which you actually wanted\n to\n have mp4 of.\njust copy the url of that page which contain the media by either copying from url bar.\nI know its pretty easy you can move to next step, just some keyboard shortcuts.\n'
         },
         {
             name: 'Step 4',
-            title: 'View the indexed video with subtitles',
+            title: 'Download your translated video!',
             article: 'While searching on the video Webcasterfeed.com you got some video by which you actually wanted\n to\n have mp4 of.\njust copy the url of that page which contain the media by either copying from url bar.\nI know its pretty easy you can move to next step, just some keyboard shortcuts.\n'
         },
     ],

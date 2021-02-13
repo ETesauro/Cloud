@@ -4,7 +4,7 @@ export default function Footer() {
 
     return (
         <div>
-            <nav id="footer" className="bg-gray-500">
+            <nav id="footer" style={{background:'linear-gradient(to right, #2f3542, #57606f)'}}>
 
                 <div className="container mx-auto pt-8 pb-4">
 
