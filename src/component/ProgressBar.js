@@ -11,7 +11,7 @@ export default function ProgressBar(props) {
     }, [props.processingProgress]);
 
     return (
-        <div className="relative pt-1 mt-5">
+        <div className="mt-5">
             <div className="flex mb-2 items-center justify-between">
                 <div>
                     <span

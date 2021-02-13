@@ -54,7 +54,7 @@ export default function TranslateCheck(props) {
 
     return (
         <div>
-            <div className="my-4 flex flex-col w-10/12 mx-auto">
+            <div className="my-4 flex flex-col mx-auto">
                 <div className="flex flex-col">
                     <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -126,10 +126,6 @@ export default function TranslateCheck(props) {
                                     </tbody>
                                 </table>
                             </div>
-
-                            <ProgressBar
-                                stateValue={props.videoInfo.videos === undefined ? '' : props.videoInfo.state}
-                                processingProgress={props.videoInfo.videos === undefined ? '' : props.videoInfo.videos[0].processingProgress}/>
                         </div>
                     </div>
                 </div>
