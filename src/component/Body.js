@@ -46,7 +46,6 @@ export default function Body(props) {
     }
 
     return (
-
         <div>
             <Step1 languageValue={language} onLanguageChangeValue={handleLanguageChange}
                    onFileChangeValue={handleLocalFileChange} onIndexedFinish={setVideoInfo}

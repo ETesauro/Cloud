@@ -21,7 +21,8 @@ export default function Step1(props) {
 
     async function indexVideo() {
 
-        console.log("sium: " + URL.createObjectURL(props.localVideoValue));
+        // Carica il video da qualche parte
+
 
         // GET ACCOUNT ACCESS TOKEN
         const tokenResponse = await axios.get(`${REACT_APP_VIDEOINDEXER_ENDPOINT}/Auth/${REACT_APP_VIDEOINDEXER_REGION}/Accounts/${REACT_APP_VIDEOINDEXER_ACCOUNT_ID}/AccessToken`, {
