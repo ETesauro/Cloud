@@ -7,6 +7,9 @@ import Step from "./Step";
 import SelectFileButton from "./SelectFileButton";
 import {sleep} from "../utils/utils";
 import TextField from '@material-ui/core/TextField';
+import VideoPlayer from "./VideoPlayer";
+import Loading from "./Loading";
+import {createFFmpeg, fetchFile} from '@ffmpeg/ffmpeg';
 
 const {
     REACT_APP_VIDEOINDEXER_API_KEY,
@@ -14,6 +17,8 @@ const {
     REACT_APP_VIDEOINDEXER_ENDPOINT,
     REACT_APP_VIDEOINDEXER_REGION
 } = process.env;
+
+const ffmpeg = createFFmpeg({log: true});
 
 // Barra di separazione
 export function LineSeparator() {
@@ -26,24 +31,23 @@ export function LineSeparator() {
     );
 }
 
-export default function SearchBar() {
+export default function Body() {
+
+    //FFMpeg
+    const [ready, setReady] = useState(false);
+    useEffect(() => {
+        load();
+    }, [])
+    const load = async () => {
+        await ffmpeg.load();
+        setReady(true);
+    }
 
     // Scelta del video
-    const [localPath, setLocalPath] = useState(""); // Forse non lo usiamo
+    const [localVideo, setLocalVideo] = useState();
+
     const [urlVideo, setUrlVideo] = useState("");
     const {v4: uuidv4} = require('uuid');
-
-    // Open FIle Dialog
-    const inputFile = useRef(null);
-    const handleFileUpload = e => {
-        const {files} = e.target;
-        console.log(files);
-
-        if (files && files.length) {
-            const filename = files[0].name;
-            setLocalPath(filename);
-        }
-    };
 
     // Video Indexer
     const [videoInfo, setVideoInfo] = useState("");
@@ -130,70 +134,80 @@ export default function SearchBar() {
         console.log("target: " + e.target.value);
     }
 
-    return (
-        <div className="border-t border-gray-200 container w-10/12 mx-auto">
+    return ready ? (
+            <div className="border-t border-gray-200 container w-10/12 mx-auto">
 
-            {/* Step 1*/}
-            <div className="mt-4">
-                <Step name={content.steps[0].name} title={content.steps[0].title}
-                      article={content.steps[0].article}/>
+                {localVideo &&
+                <h1>{localVideo.name}</h1>}
 
-                {/* Form */}
-                <div className="mt-5 flex flex-col w-10/12 mx-auto items-center">
-                    <div className="mt-5 w-10/12 md:mt-0 md:col-span-2">
-                        <form action="#" method="POST">
-                            <div className="shadow-md sm:rounded-md sm:overflow-hidden">
-                                <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
+                {/* Step 1*/}
+                <div className="mt-4">
+                    <Step name={content.steps[0].name} title={content.steps[0].title}
+                          article={content.steps[0].article}/>
 
-                                    {/*Url video*/}
-                                    <div className="mt-2 flex flex-col md:flex-row items-center justify-center">
-                                        <TextField id="outlined-basic" label="URL Video" variant="outlined"
-                                                   onChange={event => setUrlVideo(event.target.value)} fullWidth/>
-                                    </div>
+                    {/* Form */}
+                    <div className="mt-5 flex flex-col w-10/12 mx-auto items-center">
+                        <div className="mt-5 w-10/12 md:mt-0 md:col-span-2">
+                            <form action="#" method="POST">
+                                <div className="shadow-md sm:rounded-md sm:overflow-hidden">
+                                    <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
 
-                                    <p className="flex flex-row mx-auto justify-center">Or</p>
+                                        {/*Url video*/}
+                                        <div className="mt-2 flex flex-col md:flex-row items-center justify-center">
+                                            <TextField id="outlined-basic" label="URL Video" variant="outlined"
+                                                       onChange={event => setUrlVideo(event.target.value)} fullWidth/>
+                                        </div>
 
-                                    {/*Bottone per il file locale*/}
-                                    <SelectFileButton refValue={inputFile} onChangeValue={handleFileUpload}/>
+                                        <p className="flex flex-row mx-auto justify-center">Or</p>
 
-                                    {/*Dropdown languages*/}
-                                    <div>
-                                        <div className="flex flex-col items-center justify-center">
-                                            <p className="text-sm text-gray-500">Select the target language</p>
-                                            <NativeSelects onChangeValue={handleLanguageChange} languageValue={language}/>
+                                        {/*Bottone per il file locale*/}
+                                        <SelectFileButton onChangeValue={(e) => {
+                                            setLocalVideo(e.target.files?.item(0));
+                                            console.log(e.target.files?.item(0).name);
+                                        }}/>
+
+                                        {/*Dropdown languages*/}
+                                        <div>
+                                            <div className="flex flex-col items-center justify-center">
+                                                <p className="text-sm text-gray-500">Select the target language</p>
+                                                <NativeSelects onChangeValue={handleLanguageChange}
+                                                               languageValue={language}/>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
+
+                        {/*Bottone avvia*/}
+                        <button
+                            className="bg-blue-300 text-white text-xl active:bg-pink-600 font-bold uppercase px-4 py-2 mt-5 rounded-full shadow hover:shadow-md outline-none focus:outline-none hover:bg-blue-400"
+                            onClick={indexVideo}>
+                            Start
+                        </button>
                     </div>
-
-                    {/*Bottone avvia*/}
-                    <button
-                        className="bg-blue-300 text-white text-xl active:bg-pink-600 font-bold uppercase px-4 py-2 mt-5 rounded-full shadow hover:shadow-md outline-none focus:outline-none hover:bg-blue-400"
-                        onClick={indexVideo}>
-                        Start
-                    </button>
                 </div>
+
+                <LineSeparator/>
+
+                {/* Step 2*/}
+                <Step name={content.steps[1].name} title={content.steps[1].title} article={content.steps[1].article}/>
+                <TranslateCheck videoInfo={videoInfo} selectedLanguage={language}/>
+
+                <LineSeparator/>
+
+                {/* Step 3*/}
+                <Step name={content.steps[2].name} title={content.steps[2].title} article={content.steps[2].article}/>
+                <VideoPlayer videoValue={localVideo} ffmpegValue={ffmpeg}/>
+
+                <LineSeparator/>
+
+                {/* Step 4 */}
+                <Step name={content.steps[3].name} title={content.steps[3].title} article={content.steps[3].article}/>
+
             </div>
-
-            <LineSeparator/>
-
-            {/* Step 2*/}
-            <Step name={content.steps[1].name} title={content.steps[1].title} article={content.steps[1].article}/>
-            <TranslateCheck videoInfo={videoInfo} selectedLanguage={language}/>
-
-            <LineSeparator/>
-
-            {/* Step 3*/}
-            <Step name={content.steps[2].name} title={content.steps[2].title} article={content.steps[2].article}/>
-
-            <LineSeparator/>
-
-            {/* Step 4 */}
-            <Step name={content.steps[3].name} title={content.steps[3].title} article={content.steps[3].article}/>
-
-        </div>
-    );
+        )
+        :
+        <Loading/>;
 
 }

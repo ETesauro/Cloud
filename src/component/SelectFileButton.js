@@ -30,7 +30,6 @@ export default function SelectFileButton(props) {
                     Upload Video
                     <input
                         accept=".mp4"
-                        ref={props.refValue}
                         onChange={props.onChangeValue}
                         type="file"
                         hidden
