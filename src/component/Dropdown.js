@@ -62,8 +62,6 @@ export default function NativeSelects(props) {
                     })}
                 </Select>
             </FormControl>
-
-            <h1>{languages[props.languageValue]}</h1>
         </div>
     );
 }

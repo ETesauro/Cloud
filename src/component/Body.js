@@ -12,10 +12,10 @@ const {
 } = process.env;
 
 // Barra di separazione
-export function LineSeparator() {
+export function LineSeparator(props) {
     return (
-        <div aria-hidden="true">
-            <div className="py-5">
+        <div aria-hidden="true" id={props.idValue}>
+            <div className="py-10">
                 <div className="border-t border-gray-200"></div>
             </div>
         </div>
@@ -46,20 +46,19 @@ export default function Body(props) {
     }
 
     return (
-        <div>
+        <div className="md:container mx-auto">
+
             <Step1 languageValue={language} onLanguageChangeValue={handleLanguageChange}
                    onFileChangeValue={handleLocalFileChange} onIndexedFinish={setVideoInfo}
-                   localVideoValue={localVideo}/>
-
-            <LineSeparator/>
+                   localVideoValue={localVideo} ffmpegValue={props.ffmpegValue}/>
 
             <Step2 videoInfoValue={videoInfo} languageValue={language}/>
 
-            <LineSeparator/>
+            <LineSeparator idValue="step3"/>
 
             <Step3 videoValue={localVideo} ffmpegValue={props.ffmpegValue}/>
 
-            <LineSeparator/>
+            <LineSeparator idValue="step4"/>
 
             <Step4/>
 

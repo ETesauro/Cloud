@@ -22,15 +22,14 @@ function VideoPlayer(props) {
         setGif(url)
     }
     return (
-        <div>
+        <div className="flex flex-col items-center justify-center">
             {props.videoValue && <video
                 controls
-                width="500"
                 src={URL.createObjectURL(props.videoValue)}>
             </video>
             }
 
-            {props.videoValue && <button onClick={convertToGif}>Convert</button> }
+            {props.videoValue && <button onClick={convertToGif}>Convert</button>}
 
             {gif && <img src={gif} width="250"/>}
 

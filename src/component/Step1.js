@@ -5,6 +5,10 @@ import SelectFileButton from "./SelectFileButton";
 import NativeSelects from "./Dropdown";
 import axios from "axios";
 import {sleep} from "../utils/utils";
+import VideoPlaceholder from "./VideoPlaceholder";
+import {Link as ScrollLink} from 'react-scroll'
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import BlockIcon from '@material-ui/icons/Block';
 
 const {
     REACT_APP_VIDEOINDEXER_API_KEY,
@@ -17,7 +21,7 @@ const {v4: uuidv4} = require('uuid');
 
 export default function Step1(props) {
     // Scelta del video
-    const [urlVideo, setUrlVideo] = useState("");
+    const [urlVideo, setUrlVideo] = useState(""); // Da spostare nel padre (Body) se lo usiamo
 
     async function indexVideo() {
 
@@ -92,22 +96,28 @@ export default function Step1(props) {
     }
 
     return (
-        <div className="container w-10/12 mx-auto">
+        <div className="w-10/12 flex justify-center items-center mx-auto"
+             style={{'minHeight': '90vh'}}>
 
-            {/* Step 1*/}
-            <div className="mt-7">
+            <div className="w-full flex flex-col items-center justify-around"
+                 style={{'minHeight': '90vh'}}>
+
+                {/* Step title */}
                 <Step name={content.steps[0].name} title={content.steps[0].title}
                       article={content.steps[0].article}/>
 
-                {/* Form */}
-                <div className="mt-5 flex flex-col w-10/12 mx-auto items-center">
-                    <div className="mt-5 w-10/12 md:mt-0 md:col-span-2">
-                        <form action="#" method="POST">
-                            <div className="shadow-md sm:rounded-md sm:overflow-hidden">
-                                <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
+                {/* Griglia */}
+                <div className="flex flex-col mx-auto items-center w-full">
+                    <div
+                        className="grid grid-cols-3 gap-4 w-full shadow-md sm:rounded-md sm:overflow-hidden p-4 items-center bg-gray-50"
+                        style={{height: '30rem'}}>
 
-                                    {/*Url video*/}
-                                    {/*
+                        {/* Prima colonna: Upload video e scelta lingua */}
+                        <form action="#" method="POST"
+                              className="h-full flex flex-col items-center justify-center px-4 py-7 space-y-6 sm:p-6">
+
+                            {/*Url video*/}
+                            {/*
                                         <div className="mt-2 flex flex-col md:flex-row items-center justify-center">
                                             <TextField id="outlined-basic" label="URL Video" variant="outlined"
                                                        onChange={event => setUrlVideo(event.target.value)} fullWidth/>
@@ -116,28 +126,51 @@ export default function Step1(props) {
                                     <p className="flex flex-row mx-auto justify-center">Or</p>
                                     */}
 
-                                    {/*Bottone per il file locale*/}
-                                    <SelectFileButton onChangeValue={props.onFileChangeValue}/>
+                            {/*Bottone per il file locale*/}
+                            <SelectFileButton onChangeValue={props.onFileChangeValue}
+                                              localVideoValue={props.localVideoValue}/>
 
-                                    {/*Dropdown languages*/}
-                                    <div>
-                                        <div className="flex flex-col items-center justify-center">
-                                            <p className="text-sm text-gray-500">Select the target language</p>
-                                            <NativeSelects onChangeValue={props.onLanguageChangeValue}
-                                                           languageValue={props.languageValue}/>
-                                        </div>
-                                    </div>
-                                </div>
+                            {/*Dropdown languages*/}
+                            <div className="flex flex-col items-center justify-center text-center">
+                                <p className="text-sm text-gray-500">Select the target language</p>
+                                <NativeSelects onChangeValue={props.onLanguageChangeValue}
+                                               languageValue={props.languageValue}/>
                             </div>
                         </form>
-                    </div>
 
+                        {/* Seconda e terza colonna: Anteprima video */}
+                        <div className="p-10 col-span-2 mx-auto w-full h-full flex justify-center">
+                            {props.localVideoValue ?
+                                <video
+                                    className="rounded-lg"
+                                    controls
+                                    src={URL.createObjectURL(props.localVideoValue)}>
+                                </video>
+                                :
+                                <VideoPlaceholder/>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+
+                {/* Start Translation Button */}
+                <div className="flex flex-col mx-auto items-center justify-center">
                     {/*Bottone avvia*/}
-                    <button
-                        className="bg-blue-300 text-white text-xl active:bg-pink-600 font-bold uppercase px-4 py-2 mt-5 rounded-full shadow hover:shadow-md outline-none focus:outline-none hover:bg-blue-400"
-                        onClick={indexVideo}>
-                        Start
-                    </button>
+                    <ScrollLink to="step2" smooth={true} duration={2000} offset={-50}>
+                        <button
+                            className={`flex items-center
+                                text-white text-xl active:bg-pink-600
+                                font-bold uppercase
+                                px-7 py-2
+                                rounded-2xl shadow hover:shadow-md outline-none focus:outline-none
+                            ${props.localVideoValue && 'animate-bounce'}`}
+                            style={{background: props.localVideoValue ? '#2ecc71' : '#c0392b',}}
+                            disabled={!props.localVideoValue}
+                            onClick={props.localVideoValue && indexVideo}>
+                            Start Translation&nbsp;{props.localVideoValue ? <KeyboardArrowDownIcon/> : <BlockIcon/>}
+                        </button>
+                    </ScrollLink>
                 </div>
             </div>
 
