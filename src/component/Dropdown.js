@@ -4,6 +4,7 @@ import FormControl from '@material-ui/core/FormControl';
 import {makeStyles} from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
+import Swal from "sweetalert2";
 
 const {
     REACT_APP_TRANSLATOR_ENDPOINT
@@ -37,6 +38,11 @@ export default function NativeSelects(props) {
             }
             setLanguages(tmpDictionary);
         }).catch(err => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'There was a problem getting the languages list.'
+            });
             console.log(err);
         });
     }
@@ -53,6 +59,10 @@ export default function NativeSelects(props) {
                     native
                     value={languages[props.languageValue]}
                     onChange={props.onChangeValue}
+                    inputProps={{
+                        id: 'age-native-simple',
+                        name: 'code'
+                    }}
                 >
                     <option aria-label="None" value=""/>
                     {Object.keys(languages).map((key, index) => {

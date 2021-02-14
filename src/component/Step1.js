@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Step from "./Step";
 import content from "../content/content";
 import SelectFileButton from "./SelectFileButton";
@@ -9,6 +9,7 @@ import VideoPlaceholder from "./VideoPlaceholder";
 import {Link as ScrollLink} from 'react-scroll'
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import BlockIcon from '@material-ui/icons/Block';
+import Swal from "sweetalert2";
 
 const {
     REACT_APP_VIDEOINDEXER_API_KEY,
@@ -22,55 +23,103 @@ const {v4: uuidv4} = require('uuid');
 export default function Step1(props) {
     // Scelta del video
     const [urlVideo, setUrlVideo] = useState(""); // Da spostare nel padre (Body) se lo usiamo
+    const [error, setError] = useState();
+
+    useEffect(() => {
+        if (error) {
+            Swal.fire({
+                icon: 'error',
+                title: error.title,
+                text: error.text
+            });
+            props.onIndexedFinish(0);
+        }
+    }, [error]);
+
+    /* Forse lo usiamo ma dobbiamo capire come usarlo. Cioè come si passa a video indexer?
+    let fileReader;
+    const handleFileRead = (e) => {
+        const content = fileReader.result;
+        console.log(content);
+    };
+    const handleFileChosen = (file) => {
+        fileReader = new FileReader();
+        fileReader.onloadend = handleFileRead;
+        fileReader.readAsText(file);
+    };
+    */
 
     async function indexVideo() {
-
-        // Carica il video da qualche parte
-
-
         // GET ACCOUNT ACCESS TOKEN
-        const tokenResponse = await axios.get(`${REACT_APP_VIDEOINDEXER_ENDPOINT}/Auth/${REACT_APP_VIDEOINDEXER_REGION}/Accounts/${REACT_APP_VIDEOINDEXER_ACCOUNT_ID}/AccessToken`, {
-            params: {
-                'allowEdit': true
-            },
-            headers: {
-                'Ocp-Apim-Subscription-Key': `${REACT_APP_VIDEOINDEXER_API_KEY}`,
-            },
-        })
+        let tokenResponse;
+        try {
+            tokenResponse = await axios.get(`${REACT_APP_VIDEOINDEXER_ENDPOINT}/Auth/${REACT_APP_VIDEOINDEXER_REGION}/Accounts/${REACT_APP_VIDEOINDEXER_ACCOUNT_ID}/AccessToken`, {
+                params: {
+                    'allowEdit': true
+                },
+                headers: {
+                    'Ocp-Apim-Subscription-Key': `${REACT_APP_VIDEOINDEXER_API_KEY}`,
+                },
+            })
+        } catch (err) {
+            setError({
+                title: 'Oops...',
+                text: 'There was a problem retrieving the account access token.'
+            });
+            return;
+        }
         console.log("token: " + tokenResponse.data);
 
 
         // UPLOAD VIDEO
-        const videoUploadResponse = await axios.post(`${REACT_APP_VIDEOINDEXER_ENDPOINT}/${REACT_APP_VIDEOINDEXER_REGION}/Accounts/${REACT_APP_VIDEOINDEXER_ACCOUNT_ID}/Videos`, {}, {
-            headers: {
-                'Ocp-Apim-Subscription-Key': `${REACT_APP_VIDEOINDEXER_API_KEY}`,
-                'Ocp-Apim-Subscription-Region': `${REACT_APP_VIDEOINDEXER_REGION}`,
-                'Content-type': 'application/json',
-                'x-ms-request-id': uuidv4().toString()
-            },
-            params: {
-                'accessToken': tokenResponse.data,
-                'name': props.localVideoValue.name,
-                'description': 'description_name',
-                'privacy': 'private',
-                'some_partition': 'some_partition',
-                // TODO AGGIUSTA LA CREAZIONE DELL'URL
-                'videoUrl': URL.createObjectURL(props.localVideoValue).substring(5, )
-            }
-        })
+        let videoUploadResponse;
+        try {
+            videoUploadResponse = await axios.post(`${REACT_APP_VIDEOINDEXER_ENDPOINT}/${REACT_APP_VIDEOINDEXER_REGION}/Accounts/${REACT_APP_VIDEOINDEXER_ACCOUNT_ID}/Videos`, {}, {
+                headers: {
+                    'Ocp-Apim-Subscription-Key': `${REACT_APP_VIDEOINDEXER_API_KEY}`,
+                    'Ocp-Apim-Subscription-Region': `${REACT_APP_VIDEOINDEXER_REGION}`,
+                    'Content-type': 'application/json',
+                    'x-ms-request-id': uuidv4().toString()
+                },
+                params: {
+                    'accessToken': tokenResponse.data,
+                    'name': props.localVideoValue.name,
+                    'description': 'description_name',
+                    'privacy': 'private',
+                    'some_partition': 'some_partition',
+                    // TODO AGGIUSTA LA CREAZIONE DELL'URL
+                    'videoUrl': 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4'
+                }
+            })
+        } catch (err) {
+            setError({
+                title: 'Oops...',
+                text: 'There was a problem during the video\'s upload.'
+            });
+            return;
+        }
         console.log("videoUploadResponse" + videoUploadResponse.data);
 
 
         // GET VIDEO ACCESS TOKEN
-        const videoAccessTokenResponse = await axios.get(`${REACT_APP_VIDEOINDEXER_ENDPOINT}/Auth/${REACT_APP_VIDEOINDEXER_REGION}/Accounts/${REACT_APP_VIDEOINDEXER_ACCOUNT_ID}/Videos/` + videoUploadResponse.data.id + '/AccessToken', {
-            //const videoAccessTokenResponse = await axios.get(apiUrl + "/Auth/" + region + "/Accounts/" + accountId + "/Videos/" + videoUploadResponse.data.id + "/AccessToken", {
-            params: {
-                'allowEdit': true
-            },
-            headers: {
-                'Ocp-Apim-Subscription-Key': `${REACT_APP_VIDEOINDEXER_API_KEY}`
-            }
-        })
+        let videoAccessTokenResponse;
+        try {
+            videoAccessTokenResponse = await axios.get(`${REACT_APP_VIDEOINDEXER_ENDPOINT}/Auth/${REACT_APP_VIDEOINDEXER_REGION}/Accounts/${REACT_APP_VIDEOINDEXER_ACCOUNT_ID}/Videos/` + videoUploadResponse.data.id + '/AccessToken', {
+                //const videoAccessTokenResponse = await axios.get(apiUrl + "/Auth/" + region + "/Accounts/" + accountId + "/Videos/" + videoUploadResponse.data.id + "/AccessToken", {
+                params: {
+                    'allowEdit': true
+                },
+                headers: {
+                    'Ocp-Apim-Subscription-Key': `${REACT_APP_VIDEOINDEXER_API_KEY}`
+                }
+            })
+        } catch (err) {
+            setError({
+                title: 'Oops...',
+                text: 'There was a problem retrieving the video access token.'
+            });
+            return;
+        }
         console.log("videoAccessTokenResponse: " + videoAccessTokenResponse.data);
 
 
@@ -78,12 +127,21 @@ export default function Step1(props) {
         while (true) {
             await sleep(3000);
 
-            const waitToIndexResponse = await axios.get(`${REACT_APP_VIDEOINDEXER_ENDPOINT}/${REACT_APP_VIDEOINDEXER_REGION}/Accounts/${REACT_APP_VIDEOINDEXER_ACCOUNT_ID}/Videos/` + videoUploadResponse.data.id + '/Index', {
-                params: {
-                    'accessToken': videoAccessTokenResponse.data,
-                    'language': 'English'
-                }
-            })
+            let waitToIndexResponse;
+            try {
+                waitToIndexResponse = await axios.get(`${REACT_APP_VIDEOINDEXER_ENDPOINT}/${REACT_APP_VIDEOINDEXER_REGION}/Accounts/${REACT_APP_VIDEOINDEXER_ACCOUNT_ID}/Videos/` + videoUploadResponse.data.id + '/Index', {
+                    params: {
+                        'accessToken': videoAccessTokenResponse.data,
+                        'language': 'English'
+                    }
+                })
+            } catch (err) {
+                setError({
+                    title: 'Oops...',
+                    text: 'There was a problem retrieving the video\'s indexing process.'
+                });
+                return;
+            }
 
             // Aggiorno videoInfo per aggiornare ogni volta la ProgressBar
             props.onIndexedFinish(waitToIndexResponse.data);
@@ -164,11 +222,12 @@ export default function Step1(props) {
                                 font-bold uppercase
                                 px-7 py-2
                                 rounded-2xl shadow hover:shadow-md outline-none focus:outline-none
-                            ${props.localVideoValue && 'animate-bounce'}`}
-                            style={{background: props.localVideoValue ? '#2ecc71' : '#c0392b',}}
-                            disabled={!props.localVideoValue}
-                            onClick={props.localVideoValue && indexVideo}>
-                            Start Translation&nbsp;{props.localVideoValue ? <KeyboardArrowDownIcon/> : <BlockIcon/>}
+                            ${(props.localVideoValue && props.languageValue.code !== '') ? 'animate-bounce' : undefined}`}
+                            style={{background: (props.localVideoValue && props.languageValue.code !== '') ? '#2ecc71' : '#c0392b',}}
+                            disabled={!props.localVideoValue || props.languageValue.code === ''}
+                            onClick={(props.localVideoValue && props.languageValue.code !== '') ? indexVideo : undefined}>
+                            Start Translation&nbsp;{props.localVideoValue && props.languageValue.code !== '' ?
+                            <KeyboardArrowDownIcon/> : <BlockIcon/>}
                         </button>
                     </ScrollLink>
                 </div>

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios';
+import Swal from "sweetalert2";
 
 const {
     REACT_APP_TRANSLATOR_SUBSCRIPTION_KEY,
@@ -34,14 +35,24 @@ export default function TranslateCheck(props) {
             });
         });
 
-        //const translateResponse = await axios.post("https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=" + props.selectedLanguage, objArray, {
-        const translateResponse = await axios.post(`${REACT_APP_TRANSLATOR_ENDPOINT}/translate?api-version=3.0&to=` + props.selectedLanguage, objArray, {
-            headers: {
-                'Ocp-Apim-Subscription-Key': `${REACT_APP_TRANSLATOR_SUBSCRIPTION_KEY}`,
-                'Ocp-Apim-Subscription-Region': `${REACT_APP_TRANSLATOR_REGION}`,
-                'Content-type': 'application/json'
-            },
-        })
+        let translateResponse;
+        try {
+            translateResponse = await axios.post(`${REACT_APP_TRANSLATOR_ENDPOINT}/translate?api-version=3.0&to=` + props.selectedLanguage.code, objArray, {
+                headers: {
+                    'Ocp-Apim-Subscription-Key': `${REACT_APP_TRANSLATOR_SUBSCRIPTION_KEY}`,
+                    'Ocp-Apim-Subscription-Region': `${REACT_APP_TRANSLATOR_REGION}`,
+                    'Content-type': 'application/json'
+                },
+            })
+        } catch (e) {
+            await Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'There was a problem during translation\'s process.'
+            });
+            return;
+        }
+
         translateResponse.data.map((item, index) => {
             console.log("item " + index + ": " + item);
             console.log("item" + index + ": " + JSON.stringify(item));
