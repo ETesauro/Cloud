@@ -72,18 +72,18 @@ export default function TranslateCheck(props) {
                                     <thead className="bg-gray-50">
                                     <tr>
                                         <th scope="col"
-                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Start
+                                            className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Start
                                         </th>
                                         <th scope="col"
-                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Original
+                                            className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Original
                                             Text
                                         </th>
                                         <th scope="col"
-                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Translated
+                                            className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Translated
                                             Text
                                         </th>
                                         <th scope="col"
-                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">End
+                                            className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">End
                                         </th>
                                     </tr>
                                     </thead>
@@ -108,22 +108,17 @@ export default function TranslateCheck(props) {
                                             </td>
                                         </tr>
                                         :
-                                        props.videoInfo.videos === undefined ?
-                                            '' : props.videoInfo.videos[0].insights.transcript === undefined ?
-                                            '' : props.videoInfo.videos[0].insights.transcript.map((item, index) => {
-                                                return (
-                                                    <tr key={index}>
-                                                        <td scope="col"
-                                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{item.instances[0].adjustedStart}</td>
-                                                        <td scope="col"
-                                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">{item.text}</td>
-                                                        <td scope="col"
-                                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
-                                                            {
-                                                                textTranslated === undefined ?
-                                                                    '' : textTranslated[index] === undefined ?
-                                                                    '' : textTranslated[index].translations[0] === undefined ?
-                                                                        '' : textTranslated[index].translations[0].text
+                                        props.videoInfo.videos && props.videoInfo.videos[0].insights.transcript && props.videoInfo.videos[0].insights.transcript.map((item, index) => {
+                                            return (
+                                                <tr key={index}>
+                                                    <td scope="col"
+                                                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{item.instances[0].adjustedStart}</td>
+                                                    <td scope="col"
+                                                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">{item.text}</td>
+                                                    <td scope="col"
+                                                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
+                                                        {
+                                                            textTranslated && textTranslated[index] && textTranslated[index].translations[0] && textTranslated[index].translations[0].text
                                                             }
                                                         </td>
                                                         <td scope="col"

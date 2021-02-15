@@ -207,7 +207,7 @@ export default function Step1(props) {
                         <button
                             className={`flex items-center
                                 text-white text-xl active:bg-pink-600
-                                font-bold uppercase
+                                uppercase
                                 px-7 py-2
                                 rounded-2xl shadow hover:shadow-md outline-none focus:outline-none
                             ${(props.localVideoValue && props.languageValue.code !== '') ? 'animate-bounce' : undefined}`}

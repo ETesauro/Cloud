@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Step(props) {
     return (
-        <div className="w-full bg-gray-100 p-4">
+        <div className="w-full bg-gray-50 p-4">
             <div className="text-center flex justify-center items-center mb-3 pr-4 sm:pr-0">
                     <span
                         style={{background: 'linear-gradient(to right, #45aaf2, #88c8f7)'}}
