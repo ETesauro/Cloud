@@ -36,19 +36,6 @@ export default function Step1(props) {
         }
     }, [error]);
 
-    /* Forse lo usiamo ma dobbiamo capire come usarlo. Cioè come si passa a video indexer?
-    let fileReader;
-    const handleFileRead = (e) => {
-        const content = fileReader.result;
-        console.log(content);
-    };
-    const handleFileChosen = (file) => {
-        fileReader = new FileReader();
-        fileReader.onloadend = handleFileRead;
-        fileReader.readAsText(file);
-    };
-    */
-
     async function indexVideo() {
         // GET ACCOUNT ACCESS TOKEN
         let tokenResponse;
@@ -74,7 +61,10 @@ export default function Step1(props) {
         // UPLOAD VIDEO
         let videoUploadResponse;
         try {
-            videoUploadResponse = await axios.post(`${REACT_APP_VIDEOINDEXER_ENDPOINT}/${REACT_APP_VIDEOINDEXER_REGION}/Accounts/${REACT_APP_VIDEOINDEXER_ACCOUNT_ID}/Videos`, {}, {
+            const formData = new FormData();
+            formData.append('data', props.localVideoFormDataValue);
+
+            videoUploadResponse = await axios.post(`${REACT_APP_VIDEOINDEXER_ENDPOINT}/${REACT_APP_VIDEOINDEXER_REGION}/Accounts/${REACT_APP_VIDEOINDEXER_ACCOUNT_ID}/Videos`, formData, {
                 headers: {
                     'Ocp-Apim-Subscription-Key': `${REACT_APP_VIDEOINDEXER_API_KEY}`,
                     'Ocp-Apim-Subscription-Region': `${REACT_APP_VIDEOINDEXER_REGION}`,
@@ -86,9 +76,7 @@ export default function Step1(props) {
                     'name': props.localVideoValue.name,
                     'description': 'description_name',
                     'privacy': 'private',
-                    'some_partition': 'some_partition',
-                    // TODO AGGIUSTA LA CREAZIONE DELL'URL
-                    'videoUrl': 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4'
+                    'some_partition': 'some_partition'
                 }
             })
         } catch (err) {

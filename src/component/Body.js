@@ -26,6 +26,12 @@ export default function Body(props) {
     // Video Indexer
     const [localVideo, setLocalVideo] = useState();
     const [videoInfo, setVideoInfo] = useState("");
+    const [localVideoFormData, setLocalVideoFormData] = useState();
+    const handleLocalFileChange = e => {
+        e.preventDefault();
+        setLocalVideo(e.target.files?.item(0))
+        setLocalVideoFormData(e.target.files[0])
+    }
 
     // Translator
     const [language, setLanguage] = useState({
@@ -40,17 +46,13 @@ export default function Body(props) {
         });
         console.log("target: " + e.target.value);
     }
-    const handleLocalFileChange = e => {
-        setLocalVideo(e.target.files?.item(0))
-        console.log(URL.createObjectURL(e.target.files?.item(0)));
-    }
 
     return (
         <div className="md:container mx-auto">
 
-            <Step1 languageValue={language} onLanguageChangeValue={handleLanguageChange}
-                   onFileChangeValue={handleLocalFileChange} onIndexedFinish={setVideoInfo}
-                   localVideoValue={localVideo} ffmpegValue={props.ffmpegValue}/>
+            <Step1 languageValue={language} localVideoValue={localVideo} localVideoFormDataValue={localVideoFormData}
+                   onLanguageChangeValue={handleLanguageChange} onFileChangeValue={handleLocalFileChange} onIndexedFinish={setVideoInfo}
+                   ffmpegValue={props.ffmpegValue}/>
 
             <Step2 videoInfoValue={videoInfo} languageValue={language}/>
 
