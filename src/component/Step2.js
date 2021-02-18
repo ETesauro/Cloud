@@ -15,7 +15,7 @@ export default function Step2(props) {
                 stateValue={props.videoInfoValue.videos === undefined ? '' : props.videoInfoValue.state}
                 processingProgress={props.videoInfoValue.videos === undefined ? '' : props.videoInfoValue.videos[0].processingProgress}/>
 
-            <TranslateCheck videoInfo={props.videoInfoValue} selectedLanguage={props.languageValue}/>
+            <TranslateCheck videoInfo={props.videoInfoValue} selectedLanguage={props.languageValue}  onTranslationEnd={props.onTranslationEnd}/>
         </div>
     );
 }

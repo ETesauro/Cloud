@@ -57,8 +57,30 @@ export default function TranslateCheck(props) {
             console.log("item " + index + ": " + item);
             console.log("item" + index + ": " + JSON.stringify(item));
         });
+
         setTextTranslated(translateResponse.data);
         setIsTranslationEnded(true);
+
+        console.log("Sto creando il file per la Function App");
+        const translationArray = [];
+        props.videoInfo.videos[0].insights.transcript.map((item, index) => {
+            const start = item.instances[0].adjustedStart;
+            const originalText = item.text;
+            const translatedText = translateResponse.data[index].translations[0].text;
+            const end = item.instances[0].adjustedEnd;
+
+            console.log(start, originalText, translatedText, end);
+            const obj = {
+                start: start,
+                originalText: originalText,
+                translatedText: translatedText,
+                end: end
+            };
+
+            translationArray.push(obj);
+        });
+        console.log("Ho creato l'array", objArray);
+        props.onTranslationEnd(translationArray);
     };
 
     return (

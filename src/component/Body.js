@@ -47,6 +47,10 @@ export default function Body(props) {
         console.log("target: " + e.target.value);
     }
 
+    // Function App
+    const [translatedVideoInfo, setTranslatedVideoInfo] = useState();
+    const [subtitledVideoUrl, setSubtitledVideoUrl] = useState();
+
     return (
         <div className="md:container mx-auto">
 
@@ -54,15 +58,19 @@ export default function Body(props) {
                    onLanguageChangeValue={handleLanguageChange} onFileChangeValue={handleLocalFileChange} onIndexedFinish={setVideoInfo}
                    ffmpegValue={props.ffmpegValue}/>
 
-            <Step2 videoInfoValue={videoInfo} languageValue={language}/>
+            <Step2 videoInfoValue={videoInfo} languageValue={language} onTranslationEnd={setTranslatedVideoInfo}/>
 
             <LineSeparator idValue="step3"/>
 
-            <Step3 videoValue={localVideo} ffmpegValue={props.ffmpegValue}/>
+            <Step3 videoValue={localVideo} translatedVideoInfo={translatedVideoInfo} subtitledVideoUrl={subtitledVideoUrl} setSubtitledVideoUrl={setSubtitledVideoUrl}/>
 
             <LineSeparator idValue="step4"/>
 
-            <Step4/>
+            <Step4 subtitledVideoUrl={subtitledVideoUrl}/>
+
+            {translatedVideoInfo && translatedVideoInfo.map((item, index) => {
+                return (<p key={index}>{item.start} {item.originalText} {item.translatedText} {item.end}</p>);
+            })}
 
         </div>
     );
