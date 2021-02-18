@@ -58,6 +58,8 @@ export default function Body(props) {
                    onLanguageChangeValue={handleLanguageChange} onFileChangeValue={handleLocalFileChange} onIndexedFinish={setVideoInfo}
                    ffmpegValue={props.ffmpegValue}/>
 
+            <LineSeparator/>
+
             <Step2 videoInfoValue={videoInfo} languageValue={language} onTranslationEnd={setTranslatedVideoInfo}/>
 
             <LineSeparator idValue="step3"/>
@@ -67,10 +69,6 @@ export default function Body(props) {
             <LineSeparator idValue="step4"/>
 
             <Step4 subtitledVideoUrl={subtitledVideoUrl}/>
-
-            {translatedVideoInfo && translatedVideoInfo.map((item, index) => {
-                return (<p key={index}>{item.start} {item.originalText} {item.translatedText} {item.end}</p>);
-            })}
 
         </div>
     );
