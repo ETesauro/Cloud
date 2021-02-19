@@ -27,5 +27,12 @@ export default {
             title: 'Download your translated video!',
             article: 'Press the button and enjoy your subtitled video!'
         },
-    ]
+    ],
+    colors: {
+        beauBlue: "rgba(185, 214, 242, 1.0)",
+        oxfordBlue: "rgba(6, 26, 64, 1.0)",
+        usafaBlue: "rgba(3, 83, 164, 1.0)",
+        honoluluBlue: "rgba(0, 109, 170, 1.0)",
+        prussianBlue: "rgba(0, 53, 89, 1.0)"
+    }
 };

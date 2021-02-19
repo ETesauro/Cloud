@@ -208,10 +208,10 @@ export default function Step1(props) {
                             className={`flex items-center
                                 text-white text-xl active:bg-pink-600
                                 uppercase
-                                px-7 py-2
+                                px-4 py-2
                                 rounded-2xl shadow hover:shadow-md outline-none focus:outline-none
                             ${(props.localVideoValue && props.languageValue.code !== '') ? 'animate-bounce' : undefined}`}
-                            style={{background: (props.localVideoValue && props.languageValue.code !== '') ? '#2ecc71' : '#c0392b',}}
+                            style={{background: (props.localVideoValue && props.languageValue.code !== '') ? 'rgba(46,204,113,1)' : 'rgba(192,57,43, 0.6)',}}
                             disabled={!props.localVideoValue || props.languageValue.code === ''}
                             onClick={(props.localVideoValue && props.languageValue.code !== '') ? indexVideo : undefined}>
                             Start Translation&nbsp;{props.localVideoValue && props.languageValue.code !== '' ?

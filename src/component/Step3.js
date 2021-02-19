@@ -44,9 +44,9 @@ export default function Step3(props) {
             <Step name={content.steps[2].name} title={content.steps[2].title} article={content.steps[2].article}/>
 
             <div
-                className="grid grid-cols-3 gap-4 w-full shadow-md sm:rounded-md sm:overflow-hidden p-4 items-center bg-gray-50"
+                className="grid grid-cols-3 gap-4 w-full shadow-md sm:rounded-md sm:overflow-hidden p-4 items-center bg-gray-50 mt-10"
                 style={{height: '30rem'}}>
-                <div className="p-8 pt-0 col-span-3 mx-auto h-full flex justify-center items-center w-2/3">
+                <div className="p-8 col-span-3 mx-auto h-full flex justify-center items-center w-2/3">
                     {isVideoConverting ?
                         props.subtitledVideoUrl ?
                             <video src={props.subtitledVideoUrl} controls/>

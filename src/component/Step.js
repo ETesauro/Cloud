@@ -1,4 +1,5 @@
 import React from 'react'
+import content from "../content/content";
 
 export default function Step(props) {
     return (
@@ -9,7 +10,8 @@ export default function Step(props) {
                         className="text-md text-white px-8 sm:px-6 py-2 shadow text-center mb-4 mr-4 sm:mb-0 rounded-md">
                         {props.name}
                     </span>
-                <h3 id="step-2" className="header_center mb-0 leading-normal font-bold text-gray-500">
+                <h3 id="step-2" className="header_center mb-0 leading-normal font-bold text-gray-500"
+                    style={{color:content.colors.honoluluBlue}}>
                     {props.title.toUpperCase()}</h3>
             </div>
             {props.article !== '' ? <article
