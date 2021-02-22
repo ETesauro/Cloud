@@ -8,7 +8,7 @@ export default {
     },
     steps: [
         {
-            name: 'Step 1',
+            name: 'Step 10',
             title: 'Choose your local video and select the target language',
             article: 'All you have to do is press the button on your left, choose the video on your computer, select the language you want and press start.'
         },
