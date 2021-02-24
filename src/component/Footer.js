@@ -6,10 +6,10 @@ export default function Footer() {
         <footer className="text-white body-font" style={{background: 'linear-gradient(to right, #2f3542, #57606f)'}}>
             <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
                 <a className="flex title-font font-medium items-center md:justify-start justify-center text-white">
-                    <span className="ml-3 text-xl">Cloud Project</span>
+                    <span className="ml-3 text-xl">JustSubs</span>
                 </a>
                 <p className="text-sm text-gray-300 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">©
-                    2020 Tailblocks —
+                    2021 Cloud Project —
                     <a href="#" className="text-gray-400 ml-1" rel="noopener noreferrer">@knyttneve</a>
                 </p>
                 <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">

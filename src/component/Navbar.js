@@ -9,7 +9,7 @@ export default function Navbar() {
                 <div className="w-10/12 flex items-center justify-between mx-auto text-black font-dosis mx-auto">
                     <div className="flex flex-row justify-center items-center">
                         <img src={process.env.PUBLIC_URL + '/assets/logo.svg'} className="h-10"/>
-                        <span className="text-white ml-4 text-2xl">Cloud Project</span>
+                        <span className="text-white ml-4 text-2xl">JustSubs</span>
                     </div>
                     <div className="h-full flex flex-row justify-center items-center">
                         {content.nav.links.map((link, index) => {
