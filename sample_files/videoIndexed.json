@@ -1,0 +1,1795 @@
+{
+    "partition": "some_partition",
+    "description": "some_description",
+    "privacyMode": "Private",
+    "state": "Processed",
+    "accountId": "72bbde23-72dd-4c04-bbc4-85e2fffae566",
+    "id": "baf7700f7b",
+    "name": "TestMusk.mp4",
+    "userName": "FELICE COPPOLA",
+    "created": "2021-02-04T09:33:20.6614237+00:00",
+    "isOwned": true,
+    "isEditable": false,
+    "isBase": true,
+    "durationInSeconds": 22,
+    "summarizedInsights": {
+      "name": "TestMusk.mp4",
+      "id": "baf7700f7b",
+      "privacyMode": "Private",
+      "duration": {
+        "time": "0:00:22.592",
+        "seconds": 22.6
+      },
+      "thumbnailVideoId": "baf7700f7b",
+      "thumbnailId": "9b05332d-5770-476d-a6f5-955bf64eb49c",
+      "faces": [
+        {
+          "videoId": "baf7700f7b",
+          "referenceId": "2377534d-0fb4-4097-93d8-aa625cc01b36",
+          "referenceType": "Bing",
+          "confidence": 0.9824,
+          "description": "Nicholas Rory Cellan-Jones is a British journalist for BBC News. He is BBC News' technology correspondent.",
+          "title": "Journalist",
+          "thumbnailId": "8a13561b-6703-435f-9fdc-cb8eec1b63f0",
+          "seenDuration": 22.5,
+          "seenDurationRatio": 0.9959,
+          "id": 1093,
+          "name": "Rory Cellan-Jones",
+          "appearances": [
+            {
+              "startTime": "0:00:00",
+              "endTime": "0:00:22.48",
+              "startSeconds": 0,
+              "endSeconds": 22.5
+            }
+          ]
+        },
+        {
+          "videoId": "baf7700f7b",
+          "referenceId": "ce6414c0-f9f0-b48b-31f9-42a7dab4db59",
+          "referenceType": "Bing",
+          "confidence": 0.9989,
+          "description": "Elon Reeve Musk FRS is a business magnate, industrial designer and engineer. He is the founder, CEO, CTO and chief designer of SpaceX; early investor, CEO and product architect of Tesla, Inc.; founder of The Boring Company; co-founder of Neuralink; and co-founder and initial co-chairman of OpenAI. …",
+          "title": "CEO of Tesla",
+          "thumbnailId": "bd08936e-2abc-4d79-a4ac-c29c38400564",
+          "seenDuration": 2.6,
+          "seenDurationRatio": 0.1151,
+          "id": 1090,
+          "name": "Elon Musk",
+          "appearances": [
+            {
+              "startTime": "0:00:06.64",
+              "endTime": "0:00:09.24",
+              "startSeconds": 6.6,
+              "endSeconds": 9.2
+            }
+          ]
+        }
+      ],
+      "keywords": [
+        {
+          "isTranscript": true,
+          "id": 1,
+          "name": "jeff",
+          "appearances": [
+            {
+              "startTime": "0:00:06.63",
+              "endTime": "0:00:10.03",
+              "startSeconds": 6.6,
+              "endSeconds": 10
+            }
+          ]
+        },
+        {
+          "isTranscript": true,
+          "id": 2,
+          "name": "competing",
+          "appearances": [
+            {
+              "startTime": "0:00:02.98",
+              "endTime": "0:00:06.63",
+              "startSeconds": 3,
+              "endSeconds": 6.6
+            },
+            {
+              "startTime": "0:00:10.73",
+              "endTime": "0:00:14.55",
+              "startSeconds": 10.7,
+              "endSeconds": 14.6
+            }
+          ]
+        }
+      ],
+      "sentiments": [
+        {
+          "sentimentKey": "Negative",
+          "seenDurationRatio": 0.1815,
+          "appearances": [
+            {
+              "startTime": "0:00:18.38",
+              "endTime": "0:00:22.547",
+              "startSeconds": 18.4,
+              "endSeconds": 22.5
+            }
+          ]
+        },
+        {
+          "sentimentKey": "Neutral",
+          "seenDurationRatio": 0.5577,
+          "appearances": [
+            {
+              "startTime": "0:00:02.25",
+              "endTime": "0:00:02.98",
+              "startSeconds": 2.2,
+              "endSeconds": 3
+            },
+            {
+              "startTime": "0:00:06.63",
+              "endTime": "0:00:18.38",
+              "startSeconds": 6.6,
+              "endSeconds": 18.4
+            }
+          ]
+        },
+        {
+          "sentimentKey": "Positive",
+          "seenDurationRatio": 0.3231,
+          "appearances": [
+            {
+              "startTime": "0:00:00",
+              "endTime": "0:00:06.63",
+              "startSeconds": 0,
+              "endSeconds": 6.6
+            },
+            {
+              "startTime": "0:00:10.03",
+              "endTime": "0:00:10.73",
+              "startSeconds": 10,
+              "endSeconds": 10.7
+            }
+          ]
+        }
+      ],
+      "emotions": [],
+      "audioEffects": [],
+      "labels": [
+        {
+          "id": 1,
+          "name": "person",
+          "appearances": [
+            {
+              "confidence": 0.9975,
+              "startTime": "0:00:00",
+              "endTime": "0:00:21.84",
+              "startSeconds": 0,
+              "endSeconds": 21.8
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "suit",
+          "appearances": [
+            {
+              "confidence": 0.9821,
+              "startTime": "0:00:00",
+              "endTime": "0:00:21.84",
+              "startSeconds": 0,
+              "endSeconds": 21.8
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "clothing",
+          "appearances": [
+            {
+              "confidence": 0.9778,
+              "startTime": "0:00:00",
+              "endTime": "0:00:21.84",
+              "startSeconds": 0,
+              "endSeconds": 21.8
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "car",
+          "appearances": [
+            {
+              "confidence": 0.9646,
+              "startTime": "0:00:00",
+              "endTime": "0:00:21.84",
+              "startSeconds": 0,
+              "endSeconds": 21.8
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "man",
+          "appearances": [
+            {
+              "confidence": 0.9581,
+              "startTime": "0:00:00",
+              "endTime": "0:00:21.84",
+              "startSeconds": 0,
+              "endSeconds": 21.8
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "human face",
+          "appearances": [
+            {
+              "confidence": 0.9587,
+              "startTime": "0:00:00",
+              "endTime": "0:00:21.84",
+              "startSeconds": 0,
+              "endSeconds": 21.8
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "name": "vehicle",
+          "appearances": [
+            {
+              "confidence": 0.9288,
+              "startTime": "0:00:00",
+              "endTime": "0:00:21.84",
+              "startSeconds": 0,
+              "endSeconds": 21.8
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "name": "land vehicle",
+          "appearances": [
+            {
+              "confidence": 0.9184,
+              "startTime": "0:00:00",
+              "endTime": "0:00:21.84",
+              "startSeconds": 0,
+              "endSeconds": 21.8
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "name": "outdoor",
+          "appearances": [
+            {
+              "confidence": 0.832,
+              "startTime": "0:00:00",
+              "endTime": "0:00:20.48",
+              "startSeconds": 0,
+              "endSeconds": 20.5
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "name": "business",
+          "appearances": [
+            {
+              "confidence": 0.9343,
+              "startTime": "0:00:00",
+              "endTime": "0:00:07.68",
+              "startSeconds": 0,
+              "endSeconds": 7.7
+            },
+            {
+              "confidence": 0.9373,
+              "startTime": "0:00:14.08",
+              "endTime": "0:00:15.36",
+              "startSeconds": 14.1,
+              "endSeconds": 15.4
+            },
+            {
+              "confidence": 0.9344,
+              "startTime": "0:00:21.76",
+              "endTime": "0:00:21.84",
+              "startSeconds": 21.8,
+              "endSeconds": 21.8
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "name": "tie",
+          "appearances": [
+            {
+              "confidence": 0.9274,
+              "startTime": "0:00:00",
+              "endTime": "0:00:01.28",
+              "startSeconds": 0,
+              "endSeconds": 1.3
+            },
+            {
+              "confidence": 0.9242,
+              "startTime": "0:00:14.08",
+              "endTime": "0:00:15.36",
+              "startSeconds": 14.1,
+              "endSeconds": 15.4
+            },
+            {
+              "confidence": 0.9031,
+              "startTime": "0:00:21.76",
+              "endTime": "0:00:21.84",
+              "startSeconds": 21.8,
+              "endSeconds": 21.8
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "name": "wheel",
+          "appearances": [
+            {
+              "confidence": 0.9755,
+              "startTime": "0:00:07.68",
+              "endTime": "0:00:10.24",
+              "startSeconds": 7.7,
+              "endSeconds": 10.2
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "name": "tire",
+          "appearances": [
+            {
+              "confidence": 0.9441,
+              "startTime": "0:00:07.68",
+              "endTime": "0:00:10.24",
+              "startSeconds": 7.7,
+              "endSeconds": 10.2
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "name": "luxury vehicle",
+          "appearances": [
+            {
+              "confidence": 0.9157,
+              "startTime": "0:00:07.68",
+              "endTime": "0:00:10.24",
+              "startSeconds": 7.7,
+              "endSeconds": 10.2
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "name": "dressed",
+          "appearances": [
+            {
+              "confidence": 0.9267,
+              "startTime": "0:00:00",
+              "endTime": "0:00:01.28",
+              "startSeconds": 0,
+              "endSeconds": 1.3
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "name": "wearing",
+          "appearances": [
+            {
+              "confidence": 0.8794,
+              "startTime": "0:00:00",
+              "endTime": "0:00:01.28",
+              "startSeconds": 0,
+              "endSeconds": 1.3
+            }
+          ]
+        }
+      ],
+      "framePatterns": [],
+      "brands": [
+        {
+          "referenceId": "SolarCity",
+          "referenceUrl": "http://en.wikipedia.org/wiki/SolarCity",
+          "confidence": 0.7771,
+          "description": "SolarCity is an American provider of energy services, headquartered in San Mateo, California. Among its primary services, the company designs, finances, and installs solar power systems. The company has over 13,000 employees.",
+          "seenDuration": 2.4,
+          "id": 1,
+          "name": "SolarCity",
+          "appearances": [
+            {
+              "startTime": "0:00:14.55",
+              "endTime": "0:00:16.99",
+              "startSeconds": 14.6,
+              "endSeconds": 17
+            }
+          ]
+        }
+      ],
+      "namedLocations": [],
+      "namedPeople": [
+        {
+          "referenceId": "Jeff_Bezos",
+          "referenceUrl": "https://en.wikipedia.org/wiki/Jeff_Bezos",
+          "confidence": 0.7763,
+          "description": "Amazon, Blue Origin, Washington Post",
+          "seenDuration": 3.4,
+          "id": 1,
+          "name": "Jeff Bezos",
+          "appearances": [
+            {
+              "startTime": "0:00:06.63",
+              "endTime": "0:00:10.03",
+              "startSeconds": 6.6,
+              "endSeconds": 10
+            }
+          ]
+        }
+      ],
+      "statistics": {
+        "correspondenceCount": 5,
+        "speakerTalkToListenRatio": {
+          "1": 0.314,
+          "2": 0.161,
+          "3": 0.169,
+          "4": 0.169,
+          "5": 0.184
+        },
+        "speakerLongestMonolog": {
+          "1": 4,
+          "2": 3,
+          "3": 3,
+          "4": 3,
+          "5": 4
+        },
+        "speakerNumberOfFragments": {
+          "1": 2,
+          "2": 1,
+          "3": 1,
+          "4": 1,
+          "5": 1
+        },
+        "speakerWordCount": {
+          "1": 10,
+          "2": 10,
+          "3": 11,
+          "4": 11,
+          "5": 10
+        }
+      },
+      "topics": [
+        {
+          "referenceUrl": null,
+          "iptcName": null,
+          "iabName": null,
+          "confidence": 1,
+          "id": 1,
+          "name": "Competition Business",
+          "appearances": [
+            {
+              "startTime": "0:00:00",
+              "endTime": "0:00:22.547",
+              "startSeconds": 0,
+              "endSeconds": 22.5
+            }
+          ]
+        },
+        {
+          "referenceUrl": null,
+          "iptcName": null,
+          "iabName": null,
+          "confidence": 0.9622,
+          "id": 2,
+          "name": "Competition",
+          "appearances": [
+            {
+              "startTime": "0:00:00",
+              "endTime": "0:00:22.547",
+              "startSeconds": 0,
+              "endSeconds": 22.5
+            }
+          ]
+        },
+        {
+          "referenceUrl": null,
+          "iptcName": null,
+          "iabName": null,
+          "confidence": 0.7787,
+          "id": 3,
+          "name": "Competitiveness Economics",
+          "appearances": [
+            {
+              "startTime": "0:00:00",
+              "endTime": "0:00:22.547",
+              "startSeconds": 0,
+              "endSeconds": 22.5
+            }
+          ]
+        },
+        {
+          "referenceUrl": null,
+          "iptcName": null,
+          "iabName": null,
+          "confidence": 0.6324,
+          "id": 4,
+          "name": "First Mover Advantage",
+          "appearances": [
+            {
+              "startTime": "0:00:00",
+              "endTime": "0:00:22.547",
+              "startSeconds": 0,
+              "endSeconds": 22.5
+            }
+          ]
+        },
+        {
+          "referenceUrl": null,
+          "iptcName": null,
+          "iabName": null,
+          "confidence": 0.5712,
+          "id": 5,
+          "name": "Contests and Competitions",
+          "appearances": [
+            {
+              "startTime": "0:00:00",
+              "endTime": "0:00:22.547",
+              "startSeconds": 0,
+              "endSeconds": 22.5
+            }
+          ]
+        },
+        {
+          "referenceUrl": null,
+          "iptcName": null,
+          "iabName": null,
+          "confidence": 0.5469,
+          "id": 6,
+          "name": "Monopolies",
+          "appearances": [
+            {
+              "startTime": "0:00:00",
+              "endTime": "0:00:22.547",
+              "startSeconds": 0,
+              "endSeconds": 22.5
+            }
+          ]
+        }
+      ]
+    },
+    "videos": [
+      {
+        "accountId": "72bbde23-72dd-4c04-bbc4-85e2fffae566",
+        "id": "baf7700f7b",
+        "state": "Processed",
+        "moderationState": "OK",
+        "reviewState": "None",
+        "privacyMode": "Private",
+        "processingProgress": "100%",
+        "failureCode": "None",
+        "failureMessage": "",
+        "externalId": null,
+        "externalUrl": null,
+        "metadata": null,
+        "insights": {
+          "version": "1.0.0.0",
+          "duration": "0:00:22.592",
+          "sourceLanguage": "en-US",
+          "sourceLanguages": [
+            "en-US"
+          ],
+          "language": "en-US",
+          "languages": [
+            "en-US"
+          ],
+          "transcript": [
+            {
+              "id": 1,
+              "text": "Finally. You're obviously",
+              "confidence": 0.8735,
+              "speakerId": 1,
+              "language": "en-US",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:02.98",
+                  "start": "0:00:00",
+                  "end": "0:00:02.98"
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "text": "a very competitive person. You're competing with the likes of",
+              "confidence": 0.8479,
+              "speakerId": 2,
+              "language": "en-US",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:02.98",
+                  "adjustedEnd": "0:00:06.63",
+                  "start": "0:00:02.98",
+                  "end": "0:00:06.63"
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "text": "Jeff Bezos in Jeff who.",
+              "confidence": 0.8479,
+              "speakerId": 1,
+              "language": "en-US",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:06.63",
+                  "adjustedEnd": "0:00:10.03",
+                  "start": "0:00:06.63",
+                  "end": "0:00:10.03"
+                }
+              ]
+            },
+            {
+              "id": 4,
+              "text": "In rocket,",
+              "confidence": 0.8482,
+              "speakerId": 1,
+              "language": "en-US",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:10.03",
+                  "adjustedEnd": "0:00:10.73",
+                  "start": "0:00:10.03",
+                  "end": "0:00:10.73"
+                }
+              ]
+            },
+            {
+              "id": 5,
+              "text": "you're competing with Detroit. In the motor industry,",
+              "confidence": 0.8482,
+              "speakerId": 3,
+              "language": "en-US",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:10.73",
+                  "adjustedEnd": "0:00:13.51",
+                  "start": "0:00:10.73",
+                  "end": "0:00:13.51"
+                }
+              ]
+            },
+            {
+              "id": 6,
+              "text": "you're competing with",
+              "confidence": 0.8482,
+              "speakerId": 3,
+              "language": "en-US",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:13.51",
+                  "adjustedEnd": "0:00:14.55",
+                  "start": "0:00:13.51",
+                  "end": "0:00:14.55"
+                }
+              ]
+            },
+            {
+              "id": 7,
+              "text": "regulators when it comes to Solar City,",
+              "confidence": 0.8482,
+              "speakerId": 4,
+              "language": "en-US",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:14.55",
+                  "adjustedEnd": "0:00:16.99",
+                  "start": "0:00:14.55",
+                  "end": "0:00:16.99"
+                }
+              ]
+            },
+            {
+              "id": 8,
+              "text": "what drives you? Is",
+              "confidence": 0.8482,
+              "speakerId": 4,
+              "language": "en-US",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:16.99",
+                  "adjustedEnd": "0:00:18.38",
+                  "start": "0:00:16.99",
+                  "end": "0:00:18.38"
+                }
+              ]
+            },
+            {
+              "id": 9,
+              "text": "it just I am right and they are all wrong?",
+              "confidence": 0.8482,
+              "speakerId": 5,
+              "language": "en-US",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:18.38",
+                  "adjustedEnd": "0:00:22.547",
+                  "start": "0:00:18.38",
+                  "end": "0:00:22.547"
+                }
+              ]
+            }
+          ],
+          "ocr": [
+            {
+              "id": 1,
+              "text": "•424",
+              "confidence": 0.414,
+              "left": 26,
+              "top": 287,
+              "width": 82,
+              "height": 61,
+              "language": "ko-KR",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:07.68",
+                  "adjustedEnd": "0:00:22.48",
+                  "start": "0:00:07.68",
+                  "end": "0:00:22.48"
+                }
+              ]
+            }
+          ],
+          "keywords": [
+            {
+              "id": 1,
+              "text": "jeff",
+              "confidence": 0.8041,
+              "language": "en-US",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:06.63",
+                  "adjustedEnd": "0:00:10.03",
+                  "start": "0:00:06.63",
+                  "end": "0:00:10.03"
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "text": "competing",
+              "confidence": 0.6211,
+              "language": "en-US",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:02.98",
+                  "adjustedEnd": "0:00:06.63",
+                  "start": "0:00:02.98",
+                  "end": "0:00:06.63"
+                },
+                {
+                  "adjustedStart": "0:00:10.73",
+                  "adjustedEnd": "0:00:13.51",
+                  "start": "0:00:10.73",
+                  "end": "0:00:13.51"
+                },
+                {
+                  "adjustedStart": "0:00:13.51",
+                  "adjustedEnd": "0:00:14.55",
+                  "start": "0:00:13.51",
+                  "end": "0:00:14.55"
+                }
+              ]
+            }
+          ],
+          "topics": [
+            {
+              "id": 1,
+              "name": "Competition Business",
+              "referenceId": "Competition Business",
+              "referenceType": "VideoIndexer",
+              "confidence": 1,
+              "iabName": null,
+              "language": "en-US",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:22.547",
+                  "start": "0:00:00",
+                  "end": "0:00:22.547"
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "name": "Competition",
+              "referenceId": "Competition",
+              "referenceType": "VideoIndexer",
+              "confidence": 0.9622,
+              "iabName": null,
+              "language": "en-US",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:22.547",
+                  "start": "0:00:00",
+                  "end": "0:00:22.547"
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "name": "Competitiveness Economics",
+              "referenceId": "Competitiveness Economics",
+              "referenceType": "VideoIndexer",
+              "confidence": 0.7787,
+              "iabName": null,
+              "language": "en-US",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:22.547",
+                  "start": "0:00:00",
+                  "end": "0:00:22.547"
+                }
+              ]
+            },
+            {
+              "id": 4,
+              "name": "First Mover Advantage",
+              "referenceId": "First Mover Advantage",
+              "referenceType": "VideoIndexer",
+              "confidence": 0.6324,
+              "iabName": null,
+              "language": "en-US",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:22.547",
+                  "start": "0:00:00",
+                  "end": "0:00:22.547"
+                }
+              ]
+            },
+            {
+              "id": 5,
+              "name": "Contests and Competitions",
+              "referenceId": "Contests and Competitions",
+              "referenceType": "VideoIndexer",
+              "confidence": 0.5712,
+              "iabName": null,
+              "language": "en-US",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:22.547",
+                  "start": "0:00:00",
+                  "end": "0:00:22.547"
+                }
+              ]
+            },
+            {
+              "id": 6,
+              "name": "Monopolies",
+              "referenceId": "Monopolies",
+              "referenceType": "VideoIndexer",
+              "confidence": 0.5469,
+              "iabName": null,
+              "language": "en-US",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:22.547",
+                  "start": "0:00:00",
+                  "end": "0:00:22.547"
+                }
+              ]
+            }
+          ],
+          "faces": [
+            {
+              "id": 1093,
+              "name": "Rory Cellan-Jones",
+              "confidence": 0.9824,
+              "description": "Nicholas Rory Cellan-Jones is a British journalist for BBC News. He is BBC News' technology correspondent.",
+              "thumbnailId": "8a13561b-6703-435f-9fdc-cb8eec1b63f0",
+              "referenceId": "2377534d-0fb4-4097-93d8-aa625cc01b36",
+              "referenceType": "Bing",
+              "title": "Journalist",
+              "imageUrl": "https://www.bing.com/th?id=AMMS_32ef2ba8db69cacc3a2dfc856d83508d&c=12&rs=1&qlt=80&cdv=1&pid=16.2",
+              "thumbnails": [
+                {
+                  "id": "3d324ae5-8a1d-4058-b2b3-9963559e4ede",
+                  "fileName": "FaceInstanceThumbnail_3d324ae5-8a1d-4058-b2b3-9963559e4ede.jpg",
+                  "instances": [
+                    {
+                      "adjustedStart": "0:00:00",
+                      "adjustedEnd": "0:00:00.04",
+                      "start": "0:00:00",
+                      "end": "0:00:00.04"
+                    }
+                  ]
+                },
+                {
+                  "id": "d96979ec-d8a4-4f38-bec2-6422e1354971",
+                  "fileName": "FaceInstanceThumbnail_d96979ec-d8a4-4f38-bec2-6422e1354971.jpg",
+                  "instances": [
+                    {
+                      "adjustedStart": "0:00:05.04",
+                      "adjustedEnd": "0:00:05.08",
+                      "start": "0:00:05.04",
+                      "end": "0:00:05.08"
+                    }
+                  ]
+                },
+                {
+                  "id": "7377cef2-3a45-4fa3-8b62-8ab4e9817f58",
+                  "fileName": "FaceInstanceThumbnail_7377cef2-3a45-4fa3-8b62-8ab4e9817f58.jpg",
+                  "instances": [
+                    {
+                      "adjustedStart": "0:00:10.08",
+                      "adjustedEnd": "0:00:10.12",
+                      "start": "0:00:10.08",
+                      "end": "0:00:10.12"
+                    }
+                  ]
+                },
+                {
+                  "id": "7c77d564-25a8-4ab3-93ff-24e2d43fad18",
+                  "fileName": "FaceInstanceThumbnail_7c77d564-25a8-4ab3-93ff-24e2d43fad18.jpg",
+                  "instances": [
+                    {
+                      "adjustedStart": "0:00:15.12",
+                      "adjustedEnd": "0:00:15.16",
+                      "start": "0:00:15.12",
+                      "end": "0:00:15.16"
+                    }
+                  ]
+                },
+                {
+                  "id": "a190c314-fd9a-4b25-ab1e-0c20b13fe7c9",
+                  "fileName": "FaceInstanceThumbnail_a190c314-fd9a-4b25-ab1e-0c20b13fe7c9.jpg",
+                  "instances": [
+                    {
+                      "adjustedStart": "0:00:20.16",
+                      "adjustedEnd": "0:00:20.2",
+                      "start": "0:00:20.16",
+                      "end": "0:00:20.2"
+                    }
+                  ]
+                },
+                {
+                  "id": "8a13561b-6703-435f-9fdc-cb8eec1b63f0",
+                  "fileName": "FaceInstanceThumbnail_8a13561b-6703-435f-9fdc-cb8eec1b63f0.jpg",
+                  "instances": [
+                    {
+                      "adjustedStart": "0:00:21.12",
+                      "adjustedEnd": "0:00:21.16",
+                      "start": "0:00:21.12",
+                      "end": "0:00:21.16"
+                    }
+                  ]
+                }
+              ],
+              "instances": [
+                {
+                  "thumbnailsIds": [
+                    "3d324ae5-8a1d-4058-b2b3-9963559e4ede",
+                    "d96979ec-d8a4-4f38-bec2-6422e1354971"
+                  ],
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:06.6",
+                  "start": "0:00:00",
+                  "end": "0:00:06.6"
+                },
+                {
+                  "thumbnailsIds": [
+                    "7377cef2-3a45-4fa3-8b62-8ab4e9817f58",
+                    "7c77d564-25a8-4ab3-93ff-24e2d43fad18",
+                    "a190c314-fd9a-4b25-ab1e-0c20b13fe7c9",
+                    "8a13561b-6703-435f-9fdc-cb8eec1b63f0"
+                  ],
+                  "adjustedStart": "0:00:09.28",
+                  "adjustedEnd": "0:00:22.48",
+                  "start": "0:00:09.28",
+                  "end": "0:00:22.48"
+                }
+              ]
+            },
+            {
+              "id": 1090,
+              "name": "Elon Musk",
+              "confidence": 0.9989,
+              "description": "Elon Reeve Musk FRS is a business magnate, industrial designer and engineer. He is the founder, CEO, CTO and chief designer of SpaceX; early investor, CEO and product architect of Tesla, Inc.; founder of The Boring Company; co-founder of Neuralink; and co-founder and initial co-chairman of OpenAI. …",
+              "thumbnailId": "bd08936e-2abc-4d79-a4ac-c29c38400564",
+              "referenceId": "ce6414c0-f9f0-b48b-31f9-42a7dab4db59",
+              "referenceType": "Bing",
+              "title": "CEO of Tesla",
+              "imageUrl": "https://www.bing.com/th?id=AMMS_3b82ebc37407fd265e2b089dd7e1daed&c=12&rs=1&qlt=80&cdv=1&pid=16.2",
+              "thumbnails": [
+                {
+                  "id": "bd08936e-2abc-4d79-a4ac-c29c38400564",
+                  "fileName": "FaceInstanceThumbnail_bd08936e-2abc-4d79-a4ac-c29c38400564.jpg",
+                  "instances": [
+                    {
+                      "adjustedStart": "0:00:08.96",
+                      "adjustedEnd": "0:00:09",
+                      "start": "0:00:08.96",
+                      "end": "0:00:09"
+                    }
+                  ]
+                }
+              ],
+              "instances": [
+                {
+                  "thumbnailsIds": [
+                    "bd08936e-2abc-4d79-a4ac-c29c38400564"
+                  ],
+                  "adjustedStart": "0:00:06.64",
+                  "adjustedEnd": "0:00:09.24",
+                  "start": "0:00:06.64",
+                  "end": "0:00:09.24"
+                }
+              ]
+            }
+          ],
+          "labels": [
+            {
+              "id": 1,
+              "name": "person",
+              "referenceId": "person",
+              "language": "en-US",
+              "instances": [
+                {
+                  "confidence": 0.9975,
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:20.56",
+                  "start": "0:00:00",
+                  "end": "0:00:20.56"
+                },
+                {
+                  "confidence": 0.9975,
+                  "adjustedStart": "0:00:21.76",
+                  "adjustedEnd": "0:00:21.84",
+                  "start": "0:00:21.76",
+                  "end": "0:00:21.84"
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "name": "suit",
+              "referenceId": "consumer goods/clothing/suit",
+              "language": "en-US",
+              "instances": [
+                {
+                  "confidence": 0.9797,
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:07.68",
+                  "start": "0:00:00",
+                  "end": "0:00:07.68"
+                },
+                {
+                  "confidence": 0.9668,
+                  "adjustedStart": "0:00:08.96",
+                  "adjustedEnd": "0:00:20.56",
+                  "start": "0:00:08.96",
+                  "end": "0:00:20.56"
+                },
+                {
+                  "confidence": 0.9821,
+                  "adjustedStart": "0:00:21.76",
+                  "adjustedEnd": "0:00:21.84",
+                  "start": "0:00:21.76",
+                  "end": "0:00:21.84"
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "name": "clothing",
+              "referenceId": "consumer goods/clothing",
+              "language": "en-US",
+              "instances": [
+                {
+                  "confidence": 0.9813,
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:07.68",
+                  "start": "0:00:00",
+                  "end": "0:00:07.68"
+                },
+                {
+                  "confidence": 0.9687,
+                  "adjustedStart": "0:00:10.24",
+                  "adjustedEnd": "0:00:20.56",
+                  "start": "0:00:10.24",
+                  "end": "0:00:20.56"
+                },
+                {
+                  "confidence": 0.9778,
+                  "adjustedStart": "0:00:21.76",
+                  "adjustedEnd": "0:00:21.84",
+                  "start": "0:00:21.76",
+                  "end": "0:00:21.84"
+                }
+              ]
+            },
+            {
+              "id": 4,
+              "name": "car",
+              "referenceId": "conveyance/vehicle/car",
+              "language": "en-US",
+              "instances": [
+                {
+                  "confidence": 0.9699,
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:20.56",
+                  "start": "0:00:00",
+                  "end": "0:00:20.56"
+                },
+                {
+                  "confidence": 0.9646,
+                  "adjustedStart": "0:00:21.76",
+                  "adjustedEnd": "0:00:21.84",
+                  "start": "0:00:21.76",
+                  "end": "0:00:21.84"
+                }
+              ]
+            },
+            {
+              "id": 5,
+              "name": "man",
+              "referenceId": "person/man",
+              "language": "en-US",
+              "instances": [
+                {
+                  "confidence": 0.9521,
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:20.56",
+                  "start": "0:00:00",
+                  "end": "0:00:20.56"
+                },
+                {
+                  "confidence": 0.9581,
+                  "adjustedStart": "0:00:21.76",
+                  "adjustedEnd": "0:00:21.84",
+                  "start": "0:00:21.76",
+                  "end": "0:00:21.84"
+                }
+              ]
+            },
+            {
+              "id": 6,
+              "name": "human face",
+              "language": "en-US",
+              "instances": [
+                {
+                  "confidence": 0.9655,
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:07.68",
+                  "start": "0:00:00",
+                  "end": "0:00:07.68"
+                },
+                {
+                  "confidence": 0.9622,
+                  "adjustedStart": "0:00:10.24",
+                  "adjustedEnd": "0:00:11.52",
+                  "start": "0:00:10.24",
+                  "end": "0:00:11.52"
+                },
+                {
+                  "confidence": 0.9237,
+                  "adjustedStart": "0:00:12.8",
+                  "adjustedEnd": "0:00:19.2",
+                  "start": "0:00:12.8",
+                  "end": "0:00:19.2"
+                },
+                {
+                  "confidence": 0.9587,
+                  "adjustedStart": "0:00:21.76",
+                  "adjustedEnd": "0:00:21.84",
+                  "start": "0:00:21.76",
+                  "end": "0:00:21.84"
+                }
+              ]
+            },
+            {
+              "id": 7,
+              "name": "business",
+              "referenceId": "enterprise/business",
+              "language": "en-US",
+              "instances": [
+                {
+                  "confidence": 0.9397,
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:02.56",
+                  "start": "0:00:00",
+                  "end": "0:00:02.56"
+                },
+                {
+                  "confidence": 0.9343,
+                  "adjustedStart": "0:00:03.84",
+                  "adjustedEnd": "0:00:07.68",
+                  "start": "0:00:03.84",
+                  "end": "0:00:07.68"
+                },
+                {
+                  "confidence": 0.9373,
+                  "adjustedStart": "0:00:14.08",
+                  "adjustedEnd": "0:00:15.36",
+                  "start": "0:00:14.08",
+                  "end": "0:00:15.36"
+                },
+                {
+                  "confidence": 0.9344,
+                  "adjustedStart": "0:00:21.76",
+                  "adjustedEnd": "0:00:21.84",
+                  "start": "0:00:21.76",
+                  "end": "0:00:21.84"
+                }
+              ]
+            },
+            {
+              "id": 8,
+              "name": "vehicle",
+              "referenceId": "instrumentality/conveyance/vehicle",
+              "language": "en-US",
+              "instances": [
+                {
+                  "confidence": 0.9604,
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:20.56",
+                  "start": "0:00:00",
+                  "end": "0:00:20.56"
+                },
+                {
+                  "confidence": 0.9288,
+                  "adjustedStart": "0:00:21.76",
+                  "adjustedEnd": "0:00:21.84",
+                  "start": "0:00:21.76",
+                  "end": "0:00:21.84"
+                }
+              ]
+            },
+            {
+              "id": 9,
+              "name": "land vehicle",
+              "language": "en-US",
+              "instances": [
+                {
+                  "confidence": 0.9561,
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:20.56",
+                  "start": "0:00:00",
+                  "end": "0:00:20.56"
+                },
+                {
+                  "confidence": 0.9184,
+                  "adjustedStart": "0:00:21.76",
+                  "adjustedEnd": "0:00:21.84",
+                  "start": "0:00:21.76",
+                  "end": "0:00:21.84"
+                }
+              ]
+            },
+            {
+              "id": 10,
+              "name": "tie",
+              "language": "en-US",
+              "instances": [
+                {
+                  "confidence": 0.9274,
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:01.28",
+                  "start": "0:00:00",
+                  "end": "0:00:01.28"
+                },
+                {
+                  "confidence": 0.9242,
+                  "adjustedStart": "0:00:14.08",
+                  "adjustedEnd": "0:00:15.36",
+                  "start": "0:00:14.08",
+                  "end": "0:00:15.36"
+                },
+                {
+                  "confidence": 0.9031,
+                  "adjustedStart": "0:00:21.76",
+                  "adjustedEnd": "0:00:21.84",
+                  "start": "0:00:21.76",
+                  "end": "0:00:21.84"
+                }
+              ]
+            },
+            {
+              "id": 11,
+              "name": "dressed",
+              "language": "en-US",
+              "instances": [
+                {
+                  "confidence": 0.9267,
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:01.28",
+                  "start": "0:00:00",
+                  "end": "0:00:01.28"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "wearing",
+              "language": "en-US",
+              "instances": [
+                {
+                  "confidence": 0.8794,
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:01.28",
+                  "start": "0:00:00",
+                  "end": "0:00:01.28"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "outdoor",
+              "language": "en-US",
+              "instances": [
+                {
+                  "confidence": 0.8916,
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:10.24",
+                  "start": "0:00:00",
+                  "end": "0:00:10.24"
+                },
+                {
+                  "confidence": 0.832,
+                  "adjustedStart": "0:00:11.52",
+                  "adjustedEnd": "0:00:20.48",
+                  "start": "0:00:11.52",
+                  "end": "0:00:20.48"
+                }
+              ]
+            },
+            {
+              "id": 14,
+              "name": "wheel",
+              "referenceId": "device/mechanical device/wheel",
+              "language": "en-US",
+              "instances": [
+                {
+                  "confidence": 0.9755,
+                  "adjustedStart": "0:00:07.68",
+                  "adjustedEnd": "0:00:10.24",
+                  "start": "0:00:07.68",
+                  "end": "0:00:10.24"
+                }
+              ]
+            },
+            {
+              "id": 15,
+              "name": "tire",
+              "language": "en-US",
+              "instances": [
+                {
+                  "confidence": 0.9441,
+                  "adjustedStart": "0:00:07.68",
+                  "adjustedEnd": "0:00:10.24",
+                  "start": "0:00:07.68",
+                  "end": "0:00:10.24"
+                }
+              ]
+            },
+            {
+              "id": 16,
+              "name": "luxury vehicle",
+              "language": "en-US",
+              "instances": [
+                {
+                  "confidence": 0.9157,
+                  "adjustedStart": "0:00:07.68",
+                  "adjustedEnd": "0:00:10.24",
+                  "start": "0:00:07.68",
+                  "end": "0:00:10.24"
+                }
+              ]
+            }
+          ],
+          "scenes": [
+            {
+              "id": 1,
+              "instances": [
+                {
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:06.64",
+                  "start": "0:00:00",
+                  "end": "0:00:06.64"
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "instances": [
+                {
+                  "adjustedStart": "0:00:06.64",
+                  "adjustedEnd": "0:00:09.52",
+                  "start": "0:00:06.64",
+                  "end": "0:00:09.52"
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "instances": [
+                {
+                  "adjustedStart": "0:00:09.52",
+                  "adjustedEnd": "0:00:09.6",
+                  "start": "0:00:09.52",
+                  "end": "0:00:09.6"
+                }
+              ]
+            }
+          ],
+          "shots": [
+            {
+              "id": 1,
+              "tags": [
+                "Medium",
+                "LeftFace",
+                "Outdoor"
+              ],
+              "keyFrames": [
+                {
+                  "id": 1,
+                  "instances": [
+                    {
+                      "thumbnailId": "00b7ecd6-130d-4f55-b0ca-229630ec699c",
+                      "adjustedStart": "0:00:00.2",
+                      "adjustedEnd": "0:00:00.24",
+                      "start": "0:00:00.2",
+                      "end": "0:00:00.24"
+                    }
+                  ]
+                },
+                {
+                  "id": 2,
+                  "instances": [
+                    {
+                      "thumbnailId": "e261ae53-7b5c-4130-af01-5cfc038c7aec",
+                      "adjustedStart": "0:00:00.24",
+                      "adjustedEnd": "0:00:00.28",
+                      "start": "0:00:00.24",
+                      "end": "0:00:00.28"
+                    }
+                  ]
+                }
+              ],
+              "instances": [
+                {
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:06.64",
+                  "start": "0:00:00",
+                  "end": "0:00:06.64"
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "tags": [
+                "CloseUp",
+                "RightFace",
+                "Outdoor"
+              ],
+              "keyFrames": [
+                {
+                  "id": 3,
+                  "instances": [
+                    {
+                      "thumbnailId": "83d2870c-b238-4680-8ce6-44bf8a8cdba0",
+                      "adjustedStart": "0:00:06.64",
+                      "adjustedEnd": "0:00:06.68",
+                      "start": "0:00:06.64",
+                      "end": "0:00:06.68"
+                    }
+                  ]
+                }
+              ],
+              "instances": [
+                {
+                  "adjustedStart": "0:00:06.64",
+                  "adjustedEnd": "0:00:09.52",
+                  "start": "0:00:06.64",
+                  "end": "0:00:09.52"
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "tags": [
+                "Medium",
+                "LeftFace",
+                "Outdoor"
+              ],
+              "keyFrames": [
+                {
+                  "id": 4,
+                  "instances": [
+                    {
+                      "thumbnailId": "bdc08ed5-e416-45d2-a51b-cfe8f30ce656",
+                      "adjustedStart": "0:00:09.52",
+                      "adjustedEnd": "0:00:09.56",
+                      "start": "0:00:09.52",
+                      "end": "0:00:09.56"
+                    }
+                  ]
+                }
+              ],
+              "instances": [
+                {
+                  "adjustedStart": "0:00:09.52",
+                  "adjustedEnd": "0:00:09.6",
+                  "start": "0:00:09.52",
+                  "end": "0:00:09.6"
+                }
+              ]
+            }
+          ],
+          "brands": [
+            {
+              "id": 1,
+              "referenceType": "Wiki",
+              "name": "SolarCity",
+              "referenceId": "SolarCity",
+              "referenceUrl": "http://en.wikipedia.org/wiki/SolarCity",
+              "description": "SolarCity is an American provider of energy services, headquartered in San Mateo, California. Among its primary services, the company designs, finances, and installs solar power systems. The company has over 13,000 employees.",
+              "tags": [],
+              "confidence": 0.7771,
+              "isCustom": false,
+              "instances": [
+                {
+                  "brandType": "Transcript",
+                  "instanceSource": "Transcript",
+                  "adjustedStart": "0:00:14.55",
+                  "adjustedEnd": "0:00:16.99",
+                  "start": "0:00:14.55",
+                  "end": "0:00:16.99"
+                }
+              ]
+            }
+          ],
+          "namedPeople": [
+            {
+              "id": 1,
+              "name": "Jeff Bezos",
+              "referenceId": "Jeff_Bezos",
+              "referenceUrl": "https://en.wikipedia.org/wiki/Jeff_Bezos",
+              "description": "Amazon, Blue Origin, Washington Post",
+              "tags": [],
+              "confidence": 0.7763,
+              "isCustom": false,
+              "instances": [
+                {
+                  "instanceSource": "Transcript",
+                  "adjustedStart": "0:00:06.63",
+                  "adjustedEnd": "0:00:10.03",
+                  "start": "0:00:06.63",
+                  "end": "0:00:10.03"
+                }
+              ]
+            }
+          ],
+          "observedPeople": [],
+          "sentiments": [
+            {
+              "id": 1,
+              "averageScore": 0.1794,
+              "sentimentType": "Negative",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:18.38",
+                  "adjustedEnd": "0:00:22.547",
+                  "start": "0:00:18.38",
+                  "end": "0:00:22.547"
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "averageScore": 0.7243,
+              "sentimentType": "Neutral",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:02.25",
+                  "adjustedEnd": "0:00:02.98",
+                  "start": "0:00:02.25",
+                  "end": "0:00:02.98"
+                },
+                {
+                  "adjustedStart": "0:00:06.63",
+                  "adjustedEnd": "0:00:10.03",
+                  "start": "0:00:06.63",
+                  "end": "0:00:10.03"
+                },
+                {
+                  "adjustedStart": "0:00:10.73",
+                  "adjustedEnd": "0:00:18.38",
+                  "start": "0:00:10.73",
+                  "end": "0:00:18.38"
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "averageScore": 0.9143,
+              "sentimentType": "Positive",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:02.25",
+                  "start": "0:00:00",
+                  "end": "0:00:02.25"
+                },
+                {
+                  "adjustedStart": "0:00:02.98",
+                  "adjustedEnd": "0:00:06.63",
+                  "start": "0:00:02.98",
+                  "end": "0:00:06.63"
+                },
+                {
+                  "adjustedStart": "0:00:10.03",
+                  "adjustedEnd": "0:00:10.73",
+                  "start": "0:00:10.03",
+                  "end": "0:00:10.73"
+                }
+              ]
+            }
+          ],
+          "blocks": [
+            {
+              "id": 0,
+              "instances": [
+                {
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:22.547",
+                  "start": "0:00:00",
+                  "end": "0:00:22.547"
+                }
+              ]
+            }
+          ],
+          "speakers": [
+            {
+              "id": 1,
+              "name": "Speaker #1",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:00",
+                  "adjustedEnd": "0:00:02.98",
+                  "start": "0:00:00",
+                  "end": "0:00:02.98"
+                },
+                {
+                  "adjustedStart": "0:00:06.63",
+                  "adjustedEnd": "0:00:10.73",
+                  "start": "0:00:06.63",
+                  "end": "0:00:10.73"
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "name": "Speaker #2",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:02.98",
+                  "adjustedEnd": "0:00:06.63",
+                  "start": "0:00:02.98",
+                  "end": "0:00:06.63"
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "name": "Speaker #3",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:10.73",
+                  "adjustedEnd": "0:00:14.55",
+                  "start": "0:00:10.73",
+                  "end": "0:00:14.55"
+                }
+              ]
+            },
+            {
+              "id": 4,
+              "name": "Speaker #4",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:14.55",
+                  "adjustedEnd": "0:00:18.38",
+                  "start": "0:00:14.55",
+                  "end": "0:00:18.38"
+                }
+              ]
+            },
+            {
+              "id": 5,
+              "name": "Speaker #5",
+              "instances": [
+                {
+                  "adjustedStart": "0:00:18.38",
+                  "adjustedEnd": "0:00:22.547",
+                  "start": "0:00:18.38",
+                  "end": "0:00:22.547"
+                }
+              ]
+            }
+          ],
+          "textualContentModeration": {
+            "id": 0,
+            "bannedWordsCount": 0,
+            "bannedWordsRatio": 0,
+            "instances": []
+          },
+          "statistics": {
+            "correspondenceCount": 5,
+            "speakerTalkToListenRatio": {
+              "1": 0.314,
+              "2": 0.161,
+              "3": 0.169,
+              "4": 0.169,
+              "5": 0.184
+            },
+            "speakerLongestMonolog": {
+              "1": 4,
+              "2": 3,
+              "3": 3,
+              "4": 3,
+              "5": 4
+            },
+            "speakerNumberOfFragments": {
+              "1": 2,
+              "2": 1,
+              "3": 1,
+              "4": 1,
+              "5": 1
+            },
+            "speakerWordCount": {
+              "1": 10,
+              "2": 10,
+              "3": 11,
+              "4": 11,
+              "5": 10
+            }
+          }
+        },
+        "thumbnailId": "9b05332d-5770-476d-a6f5-955bf64eb49c",
+        "detectSourceLanguage": false,
+        "languageAutoDetectMode": "None",
+        "sourceLanguage": "en-US",
+        "sourceLanguages": [
+          "en-US"
+        ],
+        "language": "en-US",
+        "languages": [
+          "en-US"
+        ],
+        "indexingPreset": "Default",
+        "linguisticModelId": "00000000-0000-0000-0000-000000000000",
+        "personModelId": "00000000-0000-0000-0000-000000000000",
+        "isAdult": false,
+        "publishedUrl": "https://rodmandev.streaming.mediaservices.windows.net/b5941d52-55fe-4b86-b0c7-9765e423d32c/acf877ca-2227-413a-a7b5-88d09f71.ism/manifest(encryption=cbc)",
+        "publishedProxyUrl": null,
+        "viewToken": "Bearer=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cm46bWljcm9zb2Z0OmF6dXJlOm1lZGlhc2VydmljZXM6Y29udGVudGtleWlkZW50aWZpZXIiOiI4M2RmZjViMy1iZWY3LTQyNWItYWI2ZS01N2RjMmNjYTg4NjUiLCJuYmYiOjE2MTI0MzE1MzgsImV4cCI6MTYxMjQ3NDc5OCwiaXNzIjoiaHR0cHM6Ly9icmVha2Rvd24ubWUiLCJhdWQiOiJCcmVha2Rvd25Vc2VyIn0.f8H6EjK2zG6bcnLxd2AXwIpBfk_JXDNQkLRDDEGZYj8"
+      }
+    ],
+    "videosRanges": [
+      {
+        "videoId": "baf7700f7b",
+        "range": {
+          "start": "0:00:00",
+          "end": "0:00:22.592"
+        }
+      }
+    ]
+  }
